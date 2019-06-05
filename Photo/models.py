@@ -4,20 +4,18 @@ from django.conf import settings
 
 User = settings.AUTH_USER_MODEL
 # Create your models here.
-class Watching(models.Model):
-    watching = models.ForeignKey(User,on_delete=models.CASCADE)
-    status = models.IntegerField(default=0)
-    #status = 0 -> nobody follow
-    #status = 1 -> smobody follow us
-    #status = 2 -> followe each other
 
 
-class Followed(models.Model):
-    followed = models.ForeignKey(User,on_delete=models.CASCADE)
+class FollowedStatus(models.Model):
+    u1 = models.ForeignKey(User,on_delete=models.CASCADE,related_name='u1')
+    u2 = models.ForeignKey(User,on_delete=models.CASCADE,related_name='u2')
     status = models.IntegerField(default=0)
     #status = 0 -> nobodyfollow
-    #status = 1 -> we follow somebody
-    #status = 2 -> followe each other
+    #status = 1 -> u1 follow u2
+    #status = 2 -> u2 follow u1
+    #status = 3 -> followe each other
+
+
 
 
 
@@ -30,6 +28,11 @@ class Photo(models.Model):
     publish_date = models.DateTimeField(auto_now_add=True)
     like = models.BigIntegerField(default=0)
     ILike = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['-publish_date','-author']
+
+
 
     def get_absolute_url(self):
         return f'/p/{self.slug}'

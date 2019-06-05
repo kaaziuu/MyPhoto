@@ -19,13 +19,14 @@ from Photo import urls
 from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from MyPhoto import views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('p/', include('Photo.urls')),
     path('account/',include('account.urls')),
-
+    path('',views.main_view),
 ]
 urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
 urlpatterns += staticfiles_urlpatterns()

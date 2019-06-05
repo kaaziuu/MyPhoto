@@ -24,7 +24,7 @@ def login_view(request):
         if next:
             redirect(next)
 
-        return redirect('/test')
+        return redirect('/')
 
     context = {
         'form':form,
@@ -34,7 +34,7 @@ def login_view(request):
 
 def logout(request):
     logout(request)
-    redirect('/')
+    return redirect('/')
 
 def register_view(request):
     next = request.GET.get('next')
@@ -46,7 +46,7 @@ def register_view(request):
         user.set_password(password)
         user.save()
         new_user = authenticate(username=user.username,password=password)
-        logout(request,new_user)
+        login(request,new_user)
 
         if next:
             return redirect(next)

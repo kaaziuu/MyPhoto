@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for photo in photos %}
+<div class="card-deck">
+    <div class="card-deck">
+      <div class="card">
+        <img class="card-img-top" src="{{ photo.image.url }}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">
+              {% if photo.ILike %}
+              <img src="/assets/icon/like.jpg">
+              {% else %}
+              <img src="/assets/icon/unlike.png" style="width:30px; height:30px; " alt="like Photo">
+              {% endif %}
+              {{ photo.like }}
+              <br>
+              {{ photo.author.username }}          </h5>
+          <p class="card-text">{{ photo.description }}</p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">{{ photo.publish_date}}</small>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+{% endfor %}
+
+{% endblock %}
