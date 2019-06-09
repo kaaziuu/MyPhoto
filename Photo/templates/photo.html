@@ -8,9 +8,17 @@
         <div class="card-body">
           <h5 class="card-title">
               {% if photo.ILike %}
-              <img src="/assets/icon/like.jpg">
+              <form method="post" name="unlike"> {% csrf_token %}
+                  <button onclick="like()">
+                     <img src="/assets/icon/like.png" style="width:30px; height:30px; " alt="like Photo">
+                  </button>
+              </form>
               {% else %}
-              <img src="/assets/icon/unlike.png" style="width:30px; height:30px; " alt="like Photo">
+              <form method="post" name="like">
+                  <button onclick="unlike()">
+                     <img src="/assets/icon/unlike.png" style="width:30px; height:30px; " alt="like Photo">
+                  </button>
+              </form>
               {% endif %}
               {{ photo.like }}
               <br>
@@ -24,4 +32,10 @@
     </div>
 </div>
 
+{% endblock %}
+
+{% block scripts %}
+    <script>
+
+    </script>
 {% endblock %}

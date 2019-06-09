@@ -20,6 +20,8 @@ class FollowedStatus(models.Model):
 
 
 
+
+
 class Photo(models.Model):
     author = models.ForeignKey(User,on_delete=models.CASCADE)
     description = models.CharField(max_length=250)
@@ -27,7 +29,6 @@ class Photo(models.Model):
     slug = models.SlugField(blank=False,null=False,unique=True)
     publish_date = models.DateTimeField(auto_now_add=True)
     like = models.BigIntegerField(default=0)
-    ILike = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['-publish_date','-author']
@@ -36,3 +37,8 @@ class Photo(models.Model):
 
     def get_absolute_url(self):
         return f'/p/{self.slug}'
+
+
+class UserLike(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    photo = models.ForeignKey(Photo,on_delete=models.CASCADE)

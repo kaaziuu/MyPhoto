@@ -5,3 +5,4 @@ from .models import *
 
 admin.site.register(FollowedStatus)
 admin.site.register(Photo)
+admin.site.register(UserLike)
