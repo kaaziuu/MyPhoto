@@ -42,3 +42,4 @@ class Photo(models.Model):
 class UserLike(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     photo = models.ForeignKey(Photo,on_delete=models.CASCADE)
+    islike = models.BooleanField(default=True)

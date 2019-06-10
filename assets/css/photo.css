@@ -1,0 +1,22 @@
+.like{
+    background-color: white;
+    width:35px;
+    height:35px;
+    background-image: url('/assets/icon/like.png') ;
+    background-repeat: no-repeat;
+    background-size: 32px 32px;
+    /* background-size: auto; */
+    color: #000;
+
+
+}
+.unlike{
+    background-color: white;
+    width:35px;
+    height:35px;
+    background-image: url('/assets/icon/unlike.png') ;
+    background-repeat: no-repeat;
+    background-size: 32px 32px;
+    color: #000;
+
+}

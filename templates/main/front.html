@@ -1,41 +1,18 @@
 {% extends 'base.html' %}
-
+{% block css %} /assets/css/photo.css {% endblock %}
 {% block content %}
+<ul>
+    <div class="row">
 {% for photo in photos %}
-<div class="card-deck">
-    <div class="card-deck">
-      <div class="card">
-          <a href="{{ photo.get_absolute_url }}">
-        <img class="card-img-top" src="{{ photo.image.url }}" alt="Card image cap">
-          </a>
-        <div class="card-body">
-          <h5 class="card-title">
-            {% if photo.ILike %}
-              <form method="post" name="unlike"> {% csrf_token %}
-                  <button onclick="like()">
-                     <img src="/assets/icon/like.png" style="width:30px; height:30px; " alt="like Photo">
-                  </button>
-              </form>
-              {% else %}
-              <form method="post" name="like">
-                  <button onclick="unlike()">
-                     <img src="/assets/icon/unlike.png" style="width:30px; height:30px; " alt="like Photo">
-                  </button>
-              </form>
-              {% endif %}
-              {{ photo.like }}
-              <br>
-            {{ photo.author.username }}          </h5>
-          <p class="card-text">{{ photo.description }}</p>
-        </div>
-        <div class="card-footer">
-          <small class="text-muted">{{ photo.publish_date}}</small>
-        </div>
-      </div>
-    </div>
-</div>
 
+{% if photo in like %}
+    {% include 'photo/photo_tem.html' with photo=photo a=True like=True%}
+{% else %}
+    {% include 'photo/photo_tem.html' with photo=photo a=True like=False%}
+{% endif %}
 
 {% endfor %}
+    </div>
+</ul>
 
 {% endblock %}
