@@ -43,3 +43,13 @@ class UserLike(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     photo = models.ForeignKey(Photo,on_delete=models.CASCADE)
     islike = models.BooleanField(default=True)
+
+
+class Coments(models.Model):
+    author = models.ForeignKey(User,on_delete=models.CASCADE,null=False)
+    photo = models.ForeignKey(Photo,on_delete=models.CASCADE,null=False)
+    comment = models.TextField(null=False)
+    data = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-data','-author']

@@ -25,6 +25,21 @@
           {{ photo.author.username }}
           </h5>
           <p class="card-text">{{ photo.description }}</p>
+
+            {% if addComment %}
+                <form method="post" action=".">{% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" value="Add">
+                </form>
+
+                {% for com in comments %}
+                <p style="border:1px solid;">{{ com.comment }}</p>
+
+                {% endfor %}
+            {% else %}
+                <a href="{{photo.get_absolute_url}}">add coment</a>
+            {% endif %}
+
         </div>
         <div class="card-footer">
           <small class="text-muted">{{ photo.publish_date}}</small>

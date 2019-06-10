@@ -44,9 +44,9 @@ function unlike(id,pk) {
         dataType: 'json',
         type: 'POST',
 
-        success: function(data){
-            console.log(data)
-        }
+//        success: function(data){
+//            console.log(data)
+//        }
 
     });
 
@@ -74,9 +74,9 @@ function like(id,pk) {
             dataType: 'json',
             type: 'POST',
 
-            success: function (data) {
-                console.log(data)
-            }
+//            success: function (data) {
+//                console.log(data)
+//            }
 
         });
 }

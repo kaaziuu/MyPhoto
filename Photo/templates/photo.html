@@ -6,11 +6,14 @@
 {% block css %} /assets/css/photo.css {% endblock %}
 
 {% block content %}
+
+
 {% if like %}
-    {% include 'photo/photo_tem.html' with photo=photo a=False like=True id=1%}
+    {% include 'photo/photo_tem.html' with photo=photo a=False like=True id=1 addComment=True form=form%}
 {% else %}
-    {% include 'photo/photo_tem.html' with photo=photo a=False like=False id=1%}
+    {% include 'photo/photo_tem.html' with photo=photo a=False like=False id=1  addComment=True form=form%}
 {%endif %}
+
 {% endblock %}
 
 {% block scripts %}
