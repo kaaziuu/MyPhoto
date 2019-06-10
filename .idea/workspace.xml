@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/MyPhoto/views.py" line="35" />
+    <bookmark url="file://$PROJECT_DIR$/MyPhoto/views.py" line="60" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6c2c612-cb81-4f92-966a-9ef43ce92b9c" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/assets/js/photo/like.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyPhoto/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/MyPhoto/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Photo/templates/photo.html" beforeDir="false" afterPath="$PROJECT_DIR$/Photo/templates/photo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Photo/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Photo/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/main/front.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/front.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/photo/photo_tem.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/photo/photo_tem.html" afterDir="false" />
+>>>>>>> ajax_test
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,13 +24,37 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DockManager">
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/assets/js/photo/like.js">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="740">
+                    <caret line="83" selection-start-line="83" selection-end-line="83" />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/main/front.html">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="289">
               <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+=======
+            <state relative-caret-position="323">
+              <caret line="19" column="9" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="16" />
+>>>>>>> ajax_test
             </state>
           </provider>
         </entry>
@@ -57,11 +92,16 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/MyPhoto/views.py">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="272">
               <caret line="16" column="40" lean-forward="true" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
+=======
+            <state relative-caret-position="17">
+              <caret line="1" column="31" selection-start-line="1" selection-start-column="31" selection-end-line="1" selection-end-column="31" />
+>>>>>>> ajax_test
             </state>
           </provider>
         </entry>
@@ -97,8 +137,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Photo/views.py">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="102">
               <caret line="6" selection-start-line="6" selection-end-line="6" />
+=======
+            <state relative-caret-position="119">
+              <caret line="7" selection-start-line="7" selection-end-line="7" />
+>>>>>>> ajax_test
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -143,26 +188,27 @@
         <option value="$PROJECT_DIR$/MyPhoto/urls.py" />
         <option value="$PROJECT_DIR$/account/views.py" />
         <option value="$PROJECT_DIR$/Photo/admin.py" />
-        <option value="$PROJECT_DIR$/Photo/templates/photo.html" />
         <option value="$PROJECT_DIR$/Photo/models.py" />
-        <option value="$PROJECT_DIR$/MyPhoto/views.py" />
         <option value="$PROJECT_DIR$/templates/base.html" />
         <option value="$PROJECT_DIR$/assets/icon/photo.css" />
         <option value="$PROJECT_DIR$/assets/photo.css" />
         <option value="$PROJECT_DIR$/MyPhoto/settings.py" />
-        <option value="$PROJECT_DIR$/templates/main/front.html" />
         <option value="$PROJECT_DIR$/templates/main/photo.html" />
-        <option value="$PROJECT_DIR$/Photo/views.py" />
         <option value="$PROJECT_DIR$/assets/css/photo.css" />
+        <option value="$PROJECT_DIR$/templates/main/front.html" />
+        <option value="$PROJECT_DIR$/Photo/templates/photo.html" />
+        <option value="$PROJECT_DIR$/assets/js/photo/like.js" />
         <option value="$PROJECT_DIR$/templates/photo/photo_tem.html" />
+        <option value="$PROJECT_DIR$/Photo/views.py" />
+        <option value="$PROJECT_DIR$/MyPhoto/views.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-8" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="30" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="width" value="1696" />
+    <option name="height" value="1026" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -292,7 +338,7 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.35536295" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.35536295" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -387,6 +433,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/account/templates/tem.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -404,6 +451,8 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> ajax_test
     <entry file="file://$PROJECT_DIR$/MyPhoto/wsgi.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -413,16 +462,6 @@
           <caret line="50" column="26" selection-start-line="50" selection-start-column="26" selection-end-line="50" selection-end-column="26" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Photo/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="44" column="45" selection-start-line="44" selection-start-column="45" selection-end-line="44" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -440,33 +479,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/main/front.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/assets/icon/like.jpg">
+      <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Photo/templates/photo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Photo/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/icon/like.jpg" />
     <entry file="file://$PROJECT_DIR$/assets/css/photo.css">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="289">
+          <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+=======
         <state relative-caret-position="68">
           <caret line="4" column="48" selection-start-line="4" selection-start-column="48" selection-end-line="4" selection-end-column="48" />
         </state>
@@ -485,10 +506,86 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/account/templates/tem.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="20" lean-forward="true" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/photo/photo_tem.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="14" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
+>>>>>>> ajax_test
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Photo/templates/photo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Photo/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="102">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+=======
+        <state relative-caret-position="119">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+>>>>>>> ajax_test
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/assets/icon/like.jpg" />
+    <entry file="file://$PROJECT_DIR$/assets/css/photo.css">
+=======
+    <entry file="file://$PROJECT_DIR$/templates/main/front.html">
+>>>>>>> ajax_test
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="9" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/photo/like.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="740">
+          <caret line="83" selection-start-line="83" selection-end-line="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Photo/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="37">
+          <caret line="9" column="77" selection-start-line="9" selection-start-column="77" selection-end-line="9" selection-end-column="77" />
+=======
+        <state relative-caret-position="748">
+          <caret line="44" column="45" selection-start-line="44" selection-start-column="45" selection-end-line="44" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+>>>>>>> ajax_test
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyPhoto/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="255">
+          <caret line="15" column="14" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
+=======
+        <state relative-caret-position="17">
+          <caret line="1" column="31" selection-start-line="1" selection-start-column="31" selection-end-line="1" selection-end-column="31" />
+>>>>>>> ajax_test
         </state>
       </provider>
     </entry>

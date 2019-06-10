@@ -11,22 +11,18 @@
 
         <div class="card-body">
           <h5 class="card-title">
-              {% if like %}
-              <button onclick="like()" class="like">
-<!--                 <img src="/assets/icon/like.jpg" alt="like Photo">-->
-              </button>
-              {% elif not like %}
+            {% if like %}
 
-              <button onclick="unlike()" class="unlike">
-              </button>
+              <button type="submit" onclick="unlike({{id}},{{photo.pk}})"id="{{id}}" class="like"></button>
 
-              {% else %}
-              <h2>test</h2>
+            {% elif not like %}
 
-              {% endif %}
-              {{ photo.like }}
-              <br>
-              {{ photo.author.username }}
+              <button onclick="like({{id}},{{photo.pk}})"id="{{id}}" class="unlike"></button>
+
+          {% endif %}
+          <span id="like{{id}}">{{ photo.like }}</span>
+          <br>
+          {{ photo.author.username }}
           </h5>
           <p class="card-text">{{ photo.description }}</p>
         </div>

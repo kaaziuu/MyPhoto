@@ -7,16 +7,12 @@
 
 {% block content %}
 {% if like %}
-    {% include 'photo/photo_tem.html' with photo=photo a=False like=True %}
+    {% include 'photo/photo_tem.html' with photo=photo a=False like=True id=1%}
 {% else %}
-    {% include 'photo/photo_tem.html' with photo=photo a=False like=False %}
+    {% include 'photo/photo_tem.html' with photo=photo a=False like=False id=1%}
 {%endif %}
 {% endblock %}
 
 {% block scripts %}
-    <script>
-        function like(){
-            alert("test");
-        }
-    </script>
+<script src="/assets/js/photo/like.js"></script>
 {% endblock %}
