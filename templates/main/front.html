@@ -6,13 +6,17 @@
 {% for photo in photos %}
 
 {% if photo in like %}
-    {% include 'photo/photo_tem.html' with photo=photo a=True like=True%}
+    {% include 'photo/photo_tem.html' with photo=photo a=True like=True id=forloop.counter%}
 {% else %}
-    {% include 'photo/photo_tem.html' with photo=photo a=True like=False%}
+    {% include 'photo/photo_tem.html' with photo=photo a=True like=False id=forloop.counter%}
 {% endif %}
 
 {% endfor %}
     </div>
 </ul>
 
+{% endblock %}
+
+{% block scripts %}
+<script  src="/assets/js/photo/like.js"></script>
 {% endblock %}

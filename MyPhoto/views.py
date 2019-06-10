@@ -2,6 +2,31 @@ from django.shortcuts import render
 from Photo.models import Photo,FollowedStatus,UserLike
 
 def main_view(request):
+    if request.is_ajax():
+        # print('yes ajax')
+        id = request.POST.get('id')
+        # fun = request.POST.get('f')
+
+        photo = Photo.objects.filter(pk=id).first()
+        is_like = UserLike.objects.filter(user=request.user,photo=photo)
+        if len(is_like) > 0:
+            is_like = is_like.first()
+            if getattr(is_like, 'islike'):
+                is_like.islike = False
+                photo.like -= 1
+            else:
+                is_like.islike = True
+                photo.like += 1
+
+            photo.save()
+            is_like.save()
+
+        else:
+            UserLike.objects.create(user=request.user, photo = photo)
+            photo.like += 1
+            photo.save()
+            # print(photo.like)
+
     like_obj = UserLike.objects.filter(user=request.user,islike=True)
 
     followed_people = []
