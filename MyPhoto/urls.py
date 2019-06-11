@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from Photo import urls
+
 from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -27,6 +27,7 @@ urlpatterns = [
     path('p/', include('Photo.urls')),
     path('account/',include('account.urls')),
     path('',views.main_view),
+    path('u/',include('user.urls')),
 ]
 urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
 urlpatterns += staticfiles_urlpatterns()

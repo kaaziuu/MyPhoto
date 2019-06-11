@@ -23,10 +23,10 @@ $.ajaxSetup({
     }
 });
 
-function addComment(id) {
+function addComment(id,user) {
     comment = $('#id_comment').val();
 
-    $("#allCom").prepend('<p style="border:1px solid;">'+comment+'</p>')
+    $("#allCom").prepend('<p style="border:1px solid;"><b>'+comment+'</b><br><small>'+user+'</small></p>')
 
     $.ajax
     ({

@@ -23,17 +23,15 @@ class FollowedStatus(models.Model):
 
 
 class Photo(models.Model):
-    author = models.ForeignKey(User,on_delete=models.CASCADE)
+    author = models.ForeignKey(User ,on_delete=models.CASCADE)
     description = models.CharField(max_length=250)
     image = models.ImageField(upload_to='image/',blank=False,null=False)
-    slug = models.SlugField(blank=False,null=False,unique=True)
+    slug = models.SlugField(blank=False ,null=False,unique=True)
     publish_date = models.DateTimeField(auto_now_add=True)
     like = models.BigIntegerField(default=0)
 
     class Meta:
         ordering = ['-publish_date','-author']
-
-
 
     def get_absolute_url(self):
         return f'/p/{self.slug}'
