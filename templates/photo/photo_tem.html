@@ -27,11 +27,11 @@
           <p class="card-text">{{ photo.description }}</p>
 
             {% if addComment %}
-                <form method="post" action=".">{% csrf_token %}
-                    {{ form.as_p }}
-                    <input type="submit" value="Add">
-                </form>
 
+                {{ form.as_p }}
+                <button class="mb-2" onclick="addComment({{photo.pk}})">add Comment</button>
+
+                <div id="allCom">
                 {% for com in comments %}
                 <p style="border:1px solid;">{{ com.comment }}
                 </br>
@@ -39,6 +39,7 @@
                 </p>
 
                 {% endfor %}
+                </div>
             {% else %}
                 <a href="{{photo.get_absolute_url}}">add coment</a>
             {% endif %}

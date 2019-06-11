@@ -21,13 +21,14 @@ $.ajaxSetup({
         }
     }
 });
+
 function unlike(id,pk) {
     id_q = '#'+id;
 //    alert(pk);
     // alert(id_q);
     $(id_q).removeClass('like').addClass('unlike');
     $(id_q).removeAttr('onclick');
-    $(id_q).attr('onclick','like('+id+')');
+    $(id_q).attr('onclick', 'like(' + id + ',' + pk +')');
 
     val = $('#like' + id).html();
     val = parseInt(val)
@@ -37,12 +38,14 @@ function unlike(id,pk) {
     $.ajax
     ({
         url:'.',
+        cache: false,
         data: {
             'id': pk,
-            'f' : 'unlike'
+            'f' : 'like'
         },
         dataType: 'json',
         type: 'POST',
+
 
 //        success: function(data){
 //            console.log(data)
@@ -57,7 +60,7 @@ function like(id,pk) {
     // alert(id_q);
     $(id_q).removeClass('unlike').addClass('like');
     $(id_q).removeAttr('onclick');
-    $(id_q).attr('onclick', 'unlike(' + id + ')');
+    $(id_q).attr('onclick', 'unlike(' + id +','+ pk +')');
 
     val =  $('#like'+id).html();
     val = parseInt(val)
@@ -67,6 +70,7 @@ function like(id,pk) {
     $.ajax
         ({
             url: '.',
+            cache: false,
             data: {
                 'id': pk,
                 'f': 'like'
@@ -74,10 +78,10 @@ function like(id,pk) {
             dataType: 'json',
             type: 'POST',
 
+
 //            success: function (data) {
 //                console.log(data)
 //            }
 
         });
 }
-

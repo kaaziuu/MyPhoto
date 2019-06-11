@@ -5,20 +5,44 @@ from .models import Photo,UserLike,Coments
 # Create your views here.
 
 def show_photo(request,slug):
-    form =  addComment(request.POST or None)
-    if form.is_valid():
-        new_comment = form.save(commit=False)
-        new_comment.author = request.user
-        new_comment.photo = Photo.objects.filter(slug=slug).first()
-        new_comment.save()
-        form = addComment()
+    if request.is_ajax():
+        # print('yes ajax')
+        id = request.POST.get('id')
+        fun = request.POST.get('f')
+        photo = Photo.objects.filter(pk=id).first()
+        # print(fun)
+        if fun =='like' or fun=='unlike':
+            is_like = UserLike.objects.filter(user=request.user,photo=photo)
+            if len(is_like) > 0:
+                is_like = is_like.first()
+                if getattr(is_like, 'islike'):
+                    is_like.islike = False
+                    photo.like -= 1
+                else:
+                    is_like.islike = True
+                    photo.like += 1
+
+                photo.save()
+                is_like.save()
+
+            else:
+                UserLike.objects.create(user=request.user, photo = photo)
+                photo.like += 1
+                photo.save()
+
+        elif fun == 'comment':
+            comment = request.POST.get('comment')
+            Coments.objects.create(author=request.user, photo=photo,comment=comment)
+
+    form =  addComment()
+
 
 
     obj = Photo.objects.filter(slug=slug)
     photo_like = UserLike.objects.filter(user=request.user, photo=obj.first(), islike=True)
 
     com = Coments.objects.filter(photo__in=obj)
-    print(com)
+    # print(com)
     context = {
         'photo': obj.first(),
         'form': form,

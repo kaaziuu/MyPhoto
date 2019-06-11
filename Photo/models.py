@@ -42,13 +42,13 @@ class Photo(models.Model):
 class UserLike(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     photo = models.ForeignKey(Photo,on_delete=models.CASCADE)
-    islike = models.BooleanField(default=True)
+    islike = models.BooleanField(default=True,null=True,blank=True)
 
 
 class Coments(models.Model):
     author = models.ForeignKey(User,on_delete=models.CASCADE,null=False)
     photo = models.ForeignKey(Photo,on_delete=models.CASCADE,null=False)
-    comment = models.TextField(null=False)
+    comment = models.CharField(max_length=240,null=False)
     data = models.DateTimeField(auto_now_add=True)
 
     class Meta:

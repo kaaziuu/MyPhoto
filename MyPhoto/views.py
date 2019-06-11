@@ -5,6 +5,7 @@ def main_view(request):
     if request.is_ajax():
         # print('yes ajax')
         id = request.POST.get('id')
+        print(id)
         # fun = request.POST.get('f')
 
         photo = Photo.objects.filter(pk=id).first()
