@@ -22,7 +22,7 @@
           {% endif %}
           <span id="like{{id}}">{{ photo.like }}</span>
           <br>
-          {{ photo.author.username }}
+              <a href="/u/{{photo.author.username}}"> {{ photo.author.username }} </a>
           </h5>
           <p class="card-text">{{ photo.description }}</p>
 

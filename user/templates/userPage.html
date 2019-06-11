@@ -2,6 +2,27 @@
 {% block css %} /assets/css/user.css {% endblock %}
 
 {% block user_page %}
+<div  class="row mb-4">
+    <div class="col-md-4 col-xs-6 profile">
+        {% if isPhoto %}
+        <img id="profile" src="{{user.profilePicture.url }}">
+        {% else %}
+        <div id="profDiv"></div>
+        {% endif %}
+    </div>
+    <div class="col-md-4 col-xs-6 profile">
+        <o>{{user.description|linebreaks}} </o>
+    </div>
+    <div class="col-md-4 col xs-12">
+        <p>Followers: {{ followers }}<br/>
+            Followers: {{ following }}</p>
+        {% if request.user.username != nick %}
+            <button onclick="follow()">follow</button>
+        {% endif %}
+    </div>
+
+</div>
+
 <div class="row">
 {% for photo in photos %}
     {% if forloop.counter|divisibleby:4 %}
@@ -9,13 +30,13 @@
             </div>
         {% endif %}
         <div class="row">
-            <div class="col-md-4 col-xs-12">
-                 <img class="img"  src="{{ photo.image.url }}" alt="Card image cap">
+            <div class="col-md-4 col-xs-12 photo">
+                <a href="{{ photo.get_absolute_url }}"> <img class="img"  src="{{ photo.image.url }}" alt="Card image cap"> </a>
             </div>
 
         {% else %}
             <div class="col-md-4 col-xs-12">
-                 <img  src="{{ photo.image.url }}" alt="Card image cap">
+                <a href="{{ photo.get_absolute_url }}"> <img  src="{{ photo.image.url }}" alt="Card image cap"> </a>
             </div>
 
      {% endif %}

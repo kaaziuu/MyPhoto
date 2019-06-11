@@ -1,4 +1,15 @@
 img {
     width: 80%;
     height: 80%;
+    border: 1px solid black;
+
+}
+#profile{
+    border-radius: 20%;
+}
+#profDiv{
+    border: 1px solid black;
+    border-radius: 20%;
+    width: 80%;
+    height: 300px;
 }
