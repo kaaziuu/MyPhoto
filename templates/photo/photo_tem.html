@@ -33,7 +33,10 @@
                 </form>
 
                 {% for com in comments %}
-                <p style="border:1px solid;">{{ com.comment }}</p>
+                <p style="border:1px solid;">{{ com.comment }}
+                </br>
+                    <small>{{ con.author}}</small>
+                </p>
 
                 {% endfor %}
             {% else %}
