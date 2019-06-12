@@ -1,3 +1,5 @@
+function ajaxSetupF(){
+
     $.ajaxSetup({
         beforeSend: function (xhr, settings) {
             function getCookie(name) {
@@ -21,26 +23,4 @@
             }
         }
     });
-
-function addComment(id,user) {
-    aj.ajaxSetupF();
-    comment = $('#id_comment').val();
-    $('#id_comment').focus(function(){$(this).val('')});
-
-    $("#allCom").prepend('<p style="border:1px solid;"><b>'+comment+'</b><br><small>'+user+'</small></p>')
-
-    $.ajax
-    ({
-        url: '.',
-        data: {
-            'id':id,
-            'comment':comment,
-            'f':'comment'
-        },
-        dataType: 'json',
-        type: 'POST',
-
-
-    });
-
 }

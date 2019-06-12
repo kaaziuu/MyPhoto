@@ -15,9 +15,15 @@
     </div>
     <div class="col-md-4 col xs-12">
         <p>Followers: {{ followers }}<br/>
-            Followers: {{ following }}</p>
+            Following: {{ following }}</p>
         {% if request.user.username != nick %}
-            <button onclick="follow()">follow</button>
+            {% if not Ifollow %}
+            <button class="fl-btn" id="follow" onclick="follow('{{nick}}')">follow</button>
+            {% else %}
+            <button class="ufl-btn" id="follow" onclick="unfollow('{{ nick }} ')">unfollow</button>
+            {% endif %}
+
+
         {% endif %}
     </div>
 
@@ -43,4 +49,8 @@
 
 {% endfor %}
         </div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/assets/js/profil/follow.js"></script>
 {% endblock %}
