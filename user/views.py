@@ -106,7 +106,7 @@ def userPage(request, nick):
                 Ifollow = True
         elif status.status == 1:
             ct_followers += 1
-            if status.u2 == request.user:
+            if status.u1 == request.user:
                 Ifollow = True
         elif status.status == 2:
             ct_following += 1
