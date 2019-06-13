@@ -31,13 +31,14 @@
                 {{ form.as_p }}
                 <button class="mb-2" onclick="addComment({{photo.pk}},'{{request.user}}')">add Comment</button>
 
-                <div id="allCom">
+                <div  id="allCom">
                 {% for com in comments %}
-                    <p style="border:1px solid;">
+                    <div class="mb-1 comments" id="com{{com.pk}}" >
                         <b>{{ com.comment }}</b>
                         <br>
                         <small>{{ com.author}}</small>
-                    </p>
+                         <img onclick="deleteCom({{com.pk}})"  src="/assets/icon/trash-can.png">
+                    </div>
 
                 {% endfor %}
                 </div>

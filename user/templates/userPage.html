@@ -14,8 +14,13 @@
         <o>{{user.description|linebreaks}} </o>
     </div>
     <div class="col-md-4 col xs-12">
+<<<<<<< Updated upstream
         <p>Followers: {{ followers }}<br/>
             Followers: {{ following }}</p>
+=======
+        <p> Followers:<span id="followers"> {{ followers }} </span> <br/>
+            Following:<span id="following"> {{ following }} </span></p>
+>>>>>>> Stashed changes
         {% if request.user.username != nick %}
             <button onclick="follow()">follow</button>
         {% endif %}

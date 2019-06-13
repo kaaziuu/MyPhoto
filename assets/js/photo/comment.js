@@ -1,3 +1,7 @@
+<<<<<<< Updated upstream
+=======
+localID = 0
+>>>>>>> Stashed changes
 
 $.ajaxSetup({
     beforeSend: function (xhr, settings) {
@@ -26,8 +30,16 @@ $.ajaxSetup({
 function addComment(id,user) {
     comment = $('#id_comment').val();
 
-    $("#allCom").prepend('<p style="border:1px solid;"><b>'+comment+'</b><br><small>'+user+'</small></p>')
+    $("#allCom").prepend('<div class="mb-1 comments" id="coml'+localID+'"><b>'+
+                            comment+'</b><br><small>'+
+                            user+'</small>'+
+                            '<img id="adOnClick"  src="/assets/icon/trash-can.png">'+
+                            '</div>');
 
+    $("#adOnClick").attr('onclick','deleteCom('+localID+',"'+user+'")');
+    $('#adOnClick').removeAttr('id');
+
+    localID++;
     $.ajax
     ({
         url: '.',
@@ -40,6 +52,38 @@ function addComment(id,user) {
         type: 'POST',
 
 
+
+
     });
 
+}
+
+function deleteCom(pk,user=null){
+    // alert(pk);
+
+    useAuthor = "false";
+    // alert(test)
+    if (user != null){
+        useAuthor = "true";
+        $("#coml"+pk).remove();
+        if(pk == localID){
+            localID--;
+        }
+        alert(localID)
+    }
+    else{
+        $('#com'+pk).remove()
+    }
+
+    $.ajax({
+        url: '.',
+        data: {
+            'id': pk,
+            'f': 'deleteComment',
+            'useAuthor': useAuthor,
+            'author' : user
+            },
+        dataType: 'json',
+        type: 'POST'
+    })
 }

@@ -22,65 +22,60 @@ $.ajaxSetup({
     }
 });
 
-function unlike(id,pk) {
-    id_q = '#'+id;
-<<<<<<< Updated upstream
-//    alert(pk);
-    // alert(id_q);
-=======
-
->>>>>>> Stashed changes
-    $(id_q).removeClass('like').addClass('unlike');
-    $(id_q).removeAttr('onclick');
-    $(id_q).attr('onclick', 'like(' + id + ',' + pk +')');
-
-    val = $('#like' + id).html();
-    val = parseInt(val)
-    val--;
-    $('#like' + id).text(val);
+function follow(nick){
+    $("#follow").removeClass('fl-btn').addClass('ufl-btn');
+    $('#follow').removeAttr('onclick');
+    $('#follow').attr('onclick', 'unfollow("'+nick+ '")');
+    $('#follow').text('unfollow');
+    fl = $('#followers').html();
+    // alert(fl);
+    fl = parseInt(fl);
+    fl++;
+    $('#followers').text(" "+fl);
 
 
     $.ajax
     ({
-        url:'.',
+        url:'/u/'+nick,
         cache: false,
         data: {
-            'id': pk,
-            'f' : 'like'
+            'nick': nick,
+            'f' : 'follow'
         },
         dataType: 'json',
         type: 'POST',
 
 
 
-
     });
 
 }
-function like(id,pk) {
-    id_q = '#'+id;
-    $(id_q).removeClass('unlike').addClass('like');
-    $(id_q).removeAttr('onclick');
-    $(id_q).attr('onclick', 'unlike(' + id +','+ pk +')');
 
-    val =  $('#like'+id).html();
-    val = parseInt(val)
-    val++;
-    $('#like' + id).text(val);
+function unfollow(nick){
+    $("#follow").removeClass('ufl-btn').addClass('fl-btn');
+    $('#follow').removeAttr('onclick');
+    $('#follow').attr('onclick', 'follow("'+nick+ '")');
+    $('#follow').text('follow');
+    fl = $('#followers').html();
+    // alert(fl);
+    fl = parseInt(fl);
+    fl--;
+    $('#followers').text(" "+fl);
 
 
     $.ajax
-        ({
-            url: '.',
-            cache: false,
-            data: {
-                'id': pk,
-                'f': 'like'
-            },
-            dataType: 'json',
-            type: 'POST',
+    ({
+        url:'/u/'+nick,
+        cache: false,
+        data: {
+            'nick': nick,
+            'f' : 'unfollow'
+        },
+        dataType: 'json',
+        type: 'POST',
+       success: function(data){
 
+       }
 
-
-        });
+    });
 }

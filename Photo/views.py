@@ -32,7 +32,19 @@ def show_photo(request,slug):
 
         elif fun == 'comment':
             comment = request.POST.get('comment')
-            Coments.objects.create(author=request.user, photo=photo,comment=comment)
+            Coments.objects.create(author=request.user, photo=photo, comment=comment)
+
+        elif fun == 'deleteComment':
+            author_use = request.POST.get('useAuthor')
+
+            if author_use == 'false':
+                Coments.objects.filter(pk=id).delete()
+                
+            else:
+                author = request.POST.get('author')
+                all_com = Coments.objects.filter(author__username=author)
+                all_com[int(id)].delete()
+
 
     form =  addComment()
 
