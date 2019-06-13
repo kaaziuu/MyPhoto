@@ -40,10 +40,7 @@ def userPage(request, nick):
                     FollowedStatus.objects.create(u1=request.user, u2=u2, status=1)
 
         elif fun == 'unfollow':
-            u2 = User.objects.get(username=fl_nick)
-            print(u2)
-            our_status = FollowedStatus.objects.filter(u1=u2, u2=request.user)
-            print(our_status)
+            our_status = FollowedStatus.objects.filter(u1__username=nick, u2=request.user)
             if len(our_status) > 0:
                 our_status = our_status.first()
                 if our_status.status == 3:
@@ -54,10 +51,10 @@ def userPage(request, nick):
                 our_status.save()
 
             else:
-                our_status = FollowedStatus.objects.filter(u1=request.user, u2=u2)
+                our_status = FollowedStatus.objects.filter(u1=request.user, u2__username=nick)
                 print(our_status)
                 if len(our_status) > 0:
-                    our_status = our_status.frist()
+                    our_status = our_status.first()
                     if our_status.status == 1:
                         our_status.status = 0
                     elif our_status.status == 3:
