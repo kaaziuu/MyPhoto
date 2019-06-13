@@ -23,9 +23,4 @@ function ajaxSetupF(){
             }
         }
     });
-<<<<<<< HEAD
 }
-export default ajaxSetupF
-=======
-}
->>>>>>> follow

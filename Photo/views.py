@@ -42,7 +42,8 @@ def show_photo(request,slug):
                 
             else:
                 author = request.POST.get('author')
-                all_com = Coments.objects.filter(author__username=author)
+                photoID = request.POST.get('photoID')
+                all_com = Coments.objects.filter(author__username=author,photo__pk=int(photoID))
                 all_com[int(id)].delete()
 
 

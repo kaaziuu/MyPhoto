@@ -5,28 +5,13 @@ from .models import userData
 
 # Create your views here.
 
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-def userPage(request,nick):
-=======
+
 def userPage(request, nick):
     if request.is_ajax():
         fl_nick = request.POST.get('nick')
         fun = request.POST.get('f')
         if fun == 'follow':
             our_status = FollowedStatus.objects.filter(u1__username=nick, u2=request.user)
-=======
-def userPage(request, nick):
-    if request.is_ajax():
-        # print('test')
-        fl_nick = request.POST.get('nick')
-        print(fl_nick)
-        fun = request.POST.get('f')
-        # print(fun)
-        if fun == 'follow':
-            our_status = FollowedStatus.objects.filter(u1__username=fl_nick, u2=request.user)
-            print(our_status)
->>>>>>> follow
             if len(our_status) > 0:
                 our_status = our_status.first()
                 if our_status.status == 0:
@@ -36,14 +21,8 @@ def userPage(request, nick):
                     our_status.status = 3
                 our_status.save()
             else:
-<<<<<<< HEAD
                 our_status = FollowedStatus.objects.filter(u1=request.user, u2__username=nick)
 
-=======
-                our_status = FollowedStatus.objects.filter(u1=request.user, u2__username=fl_nick)
-                # print("---")
-                # print(our_status)
->>>>>>> follow
                 if len(our_status) > 0:
                     our_status = our_status.first()
                     if our_status.status == 0:
@@ -52,20 +31,13 @@ def userPage(request, nick):
                         our_status.status = 3
                     our_status.save()
                 else:
-<<<<<<< HEAD
                     u2 = User.objects.get(username=nick)
                     FollowedStatus.objects.create(u1=request.user, u2=u2, status=1)
 
         elif fun == 'unfollow':
 
             # I don't know why i can't user fl_nick
-=======
-                    u2 = User.objects.get(username=fl_nick)
-                    # print(u2)
-                    FollowedStatus.objects.create(u1=request.user, u2=u2, status=1)
 
-        elif fun == 'unfollow':
->>>>>>> follow
             our_status = FollowedStatus.objects.filter(u1__username=nick, u2=request.user)
             if len(our_status) > 0:
                 our_status = our_status.first()
@@ -78,10 +50,7 @@ def userPage(request, nick):
 
             else:
                 our_status = FollowedStatus.objects.filter(u1=request.user, u2__username=nick)
-<<<<<<< HEAD
-=======
-                print(our_status)
->>>>>>> follow
+
                 if len(our_status) > 0:
                     our_status = our_status.first()
                     if our_status.status == 1:
@@ -92,18 +61,8 @@ def userPage(request, nick):
                 else:
                     print('error')
 
-<<<<<<< HEAD
     Ifollow = False
->>>>>>> Stashed changes
-=======
 
-
-
-
-
-    # print('test')
-    Ifollow = False
->>>>>>> follow
     objs = Photo.objects.filter(author__username=nick)
     userDatas = userData.objects.filter(user__username=nick)
     is_photo = False

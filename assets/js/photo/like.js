@@ -25,16 +25,8 @@ $.ajaxSetup({
 
 function unlike(id,pk) {
     id_q = '#'+id;
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
 
->>>>>>> follow
-//    alert(pk);
-    // alert(id_q);
-=======
 
->>>>>>> Stashed changes
     $(id_q).removeClass('like').addClass('unlike');
     $(id_q).removeAttr('onclick');
     $(id_q).attr('onclick', 'like(' + id + ',' + pk +')');

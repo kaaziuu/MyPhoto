@@ -1,8 +1,7 @@
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-localID = 0
->>>>>>> Stashed changes
+
+localID = 0;
+var deleteIndex = [];
+
 
 $.ajaxSetup({
     beforeSend: function (xhr, settings) {
@@ -16,34 +15,20 @@ $.ajaxSetup({
                     if (cookie.substring(0, name.length + 1) == (name + '=')) {
                         cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
                         break;
-=======
-    $.ajaxSetup({
-        beforeSend: function (xhr, settings) {
-            function getCookie(name) {
-                var cookieValue = null;
-                if (document.cookie && document.cookie != '') {
-                    var cookies = document.cookie.split(';');
-                    for (var i = 0; i < cookies.length; i++) {
-                        var cookie = jQuery.trim(cookies[i]);
-                        // Does this cookie string begin with the name we want?
-                        if (cookie.substring(0, name.length + 1) == (name + '=')) {
-                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                            break;
-                        }
->>>>>>> follow
                     }
                 }
-                return cookieValue;
             }
-            if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
-                // Only send the token to relative URLs i.e. locally.
-                xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
-            }
+            return cookieValue;
         }
-    });
+        if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+            // Only send the token to relative URLs i.e. locally.
+            xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+        }
+    }
+});
 
 function addComment(id,user) {
-    aj.ajaxSetupF();
+    localID++;
     comment = $('#id_comment').val();
     $('#id_comment').focus(function(){$(this).val('')});
 
@@ -53,10 +38,10 @@ function addComment(id,user) {
                             '<img id="adOnClick"  src="/assets/icon/trash-can.png">'+
                             '</div>');
 
-    $("#adOnClick").attr('onclick','deleteCom('+localID+',"'+user+'")');
+    $("#adOnClick").attr('onclick','deleteCom('+localID+','+id+',"'+user+'")');
     $('#adOnClick').removeAttr('id');
 
-    localID++;
+
     $.ajax
     ({
         url: '.',
@@ -67,15 +52,11 @@ function addComment(id,user) {
         },
         dataType: 'json',
         type: 'POST',
-
-
-
-
     });
 
 }
 
-function deleteCom(pk,user=null){
+function deleteCom(pk,idPhoto=null,user=null){
     // alert(pk);
 
     useAuthor = "false";
@@ -83,14 +64,24 @@ function deleteCom(pk,user=null){
     if (user != null){
         useAuthor = "true";
         $("#coml"+pk).remove();
-        if(pk == localID){
-            localID--;
-        }
-        alert(localID)
+        pk = parseInt(pk);
+        pk = localID - pk;
+        tpk = pk
+        deleteIndex.forEach(function(item){
+            if(pk>item){
+                pk --;
+            }
+        });
+        deleteIndex.push(tpk);
+
+        console.log(pk)
     }
     else{
-        $('#com'+pk).remove()
+        $('#com'+pk).remove();
+        idPhoto = 'nic';
     }
+
+
 
     $.ajax({
         url: '.',
@@ -98,9 +89,10 @@ function deleteCom(pk,user=null){
             'id': pk,
             'f': 'deleteComment',
             'useAuthor': useAuthor,
-            'author' : user
+            'author' : user,
+            'photoID': idPhoto
             },
         dataType: 'json',
         type: 'POST'
-    })
+    });
 }

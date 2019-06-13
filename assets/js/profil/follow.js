@@ -26,16 +26,12 @@ function follow(nick){
     $("#follow").removeClass('fl-btn').addClass('ufl-btn');
     $('#follow').removeAttr('onclick');
     $('#follow').attr('onclick', 'unfollow("'+nick+ '")');
-<<<<<<< HEAD
     $('#follow').text('unfollow');
     fl = $('#followers').html();
     // alert(fl);
     fl = parseInt(fl);
     fl++;
     $('#followers').text(" "+fl);
-=======
-    $('#follow').text('unfollow')
->>>>>>> follow
 
 
     $.ajax
@@ -50,12 +46,6 @@ function follow(nick){
         type: 'POST',
 
 
-<<<<<<< HEAD
-=======
-//        success: function(data){
-//            console.log(data)
-//        }
->>>>>>> follow
 
     });
 
@@ -66,15 +56,11 @@ function unfollow(nick){
     $('#follow').removeAttr('onclick');
     $('#follow').attr('onclick', 'follow("'+nick+ '")');
     $('#follow').text('follow');
-<<<<<<< HEAD
     fl = $('#followers').html();
     // alert(fl);
     fl = parseInt(fl);
     fl--;
     $('#followers').text(" "+fl);
-=======
-    // alert(nick);
->>>>>>> follow
 
 
     $.ajax
@@ -87,17 +73,11 @@ function unfollow(nick){
         },
         dataType: 'json',
         type: 'POST',
-<<<<<<< HEAD
-       success: function(data){
-
-       }
-=======
 
 
 //        success: function(data){
 //            console.log(data)
 //        }
->>>>>>> follow
 
     });
 }
