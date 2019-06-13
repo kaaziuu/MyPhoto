@@ -22,9 +22,14 @@ $.ajaxSetup({
     }
 });
 
+
 function unlike(id,pk) {
     id_q = '#'+id;
+<<<<<<< HEAD
 <<<<<<< Updated upstream
+=======
+
+>>>>>>> follow
 //    alert(pk);
     // alert(id_q);
 =======
@@ -58,6 +63,7 @@ function unlike(id,pk) {
 
 }
 function like(id,pk) {
+
     id_q = '#'+id;
     $(id_q).removeClass('unlike').addClass('like');
     $(id_q).removeAttr('onclick');

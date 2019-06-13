@@ -1,19 +1,17 @@
-
-
-
 {% extends 'base.html' %}
 
 {% block css %} /assets/css/photo.css {% endblock %}
 
 {% block content %}
 
+<div class="row">
 
-{% if like %}
-    {% include 'photo/photo_tem.html' with photo=photo a=False like=True id=1 addComment=True form=form%}
-{% else %}
-    {% include 'photo/photo_tem.html' with photo=photo a=False like=False id=1  addComment=True form=form%}
-{%endif %}
-
+    {% if like %}
+        {% include 'photo/photo_tem.html' with photo=photo a=False like=True id=1 addComment=True form=form%}
+    {% else %}
+        {% include 'photo/photo_tem.html' with photo=photo a=False like=False id=1  addComment=True form=form%}
+    {%endif %}
+</div>
 {% endblock %}
 
 {% block scripts %}
