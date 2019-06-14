@@ -1,9 +1,11 @@
 from django.shortcuts import render,redirect
+from django.contrib.auth.decorators import login_required
 from .slug_generator import slug_generator
 from .forms import addComment,AddPhoto
 from .models import Photo,UserLike,Coments
 # Create your views here.
 
+@login_required
 def show_photo(request,slug):
     if request.is_ajax():
         # print('yes ajax')
@@ -67,7 +69,7 @@ def show_photo(request,slug):
 
     return render(request, 'photo.html', context)
 
-
+@login_required
 def add_photo(request):
     form = AddPhoto(request.POST or None, request.FILES or None)
     if form.is_valid():

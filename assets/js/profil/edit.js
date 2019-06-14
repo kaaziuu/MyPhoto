@@ -1,4 +1,10 @@
 function show(id){
-    qid = '#'+id
-    $(qid).removeClass('none')
+    qid = '#'+id;
+    if($(qid).hasClass('none')){
+        $(qid).removeClass('none');
+    }
+    else{
+        $(qid).addClass('none')
+    }
+
 }

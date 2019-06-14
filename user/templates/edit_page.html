@@ -1,6 +1,7 @@
 {% extends 'base2.html' %}
 {% block css %} /assets/css/edit.css {%  endblock %}
 {% block user_page %}
+
 <div class="d-flex justify-content-center">
     <div class="col-md-6">
         <h1>Edit your profile</h1>
@@ -8,7 +9,12 @@
 </div>
 <div class="d-flex justify-content-center">
     <div class="col-md-6">
-        <img src="{{data.profilePicture.url}}"><br>
+        {% if data.profilePicture %}
+        <img src="{{data.profilePicture.url}}">
+        {% else %}
+        <h3> chose your profile picture </h3>
+        {% endif %}
+        <br>
         <button class="mt-1" onclick="show('f1')">Edit</button>
         <form class="none" id="f1" method="post" enctype="multipart/form-data">{% csrf_token %}
             {{ imageEdit.as_p }}
@@ -16,6 +22,7 @@
         </form>
     </div>
 </div>
+<br>
 <div class="d-flex justify-content-center">
     <div class="col-md-6">
         <p>{{ data.description|linebreaks }}</p>

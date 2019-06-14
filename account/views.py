@@ -5,9 +5,8 @@ from django.contrib.auth import (
     login,
     logout as dj_logout
 )
-
 from .forms import *
-
+from user.models import userData
 
 # Create your views here.
 
@@ -36,7 +35,7 @@ def login_view(request):
 
 def logout(request):
     dj_logout(request)
-    return redirect('/account/login/')
+    return redirect('/accounts/login/')
 
 def register_view(request):
     next = request.GET.get('next')
@@ -52,6 +51,8 @@ def register_view(request):
 
         if next:
             return redirect(next)
+
+        new_data = userData.objects.create(user=request.user)
 
         return redirect('/')
 

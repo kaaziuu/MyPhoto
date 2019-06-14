@@ -1,12 +1,13 @@
 from django.shortcuts import render,redirect
-from  django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from Photo.models import Photo, FollowedStatus
 from .models import userData
 from .forms import ProfilePicterEdit,DescriptionEdit
 
 # Create your views here.
 
-
+@login_required
 def userPage(request, nick):
     if request.is_ajax():
         fl_nick = request.POST.get('nick')
@@ -70,7 +71,7 @@ def userPage(request, nick):
     Ifollow = False
 
     objs = Photo.objects.filter(author__username=nick)
-    userDatas = userData.objects.filter(user__username=nick)
+    userDatas = userData.object.all().by_nick(nick)
     is_photo = False
     if len(userDatas) > 0:
         userDatas = userDatas.first()
@@ -118,6 +119,7 @@ def userPage(request, nick):
     }
     return render(request, 'user_page.html', context)
 
+@login_required
 def edit(request,nick):
     if request.user.username != nick:
         url = '/u/'+nick+'/edit'
@@ -132,7 +134,7 @@ def edit(request,nick):
     description_edit = DescriptionEdit(request.POST or None,instance=data)
     if description_edit.is_valid():
         description_edit.save()
-        description_edit = DescriptionEdit()
+        description_edit = DescriptionEdit(instance=data)
 
     context = {
         'data': data,
