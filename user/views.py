@@ -124,7 +124,7 @@ def edit(request,nick):
     if request.user.username != nick:
         url = '/u/'+nick+'/edit'
         return redirect(url)
-    data = userData.objects.filter(user__username=nick)
+    data = userData.object.all().by_nick(nick)
     data = data.first()
     image_edit = ProfilePicterEdit(request.POST or None, request.FILES or None,instance=data)
     if image_edit.is_valid():

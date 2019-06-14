@@ -52,7 +52,9 @@ def register_view(request):
         if next:
             return redirect(next)
 
-        new_data = userData.objects.create(user=request.user)
+        new_data = userData()
+        new_data.user = request.user
+        new_data.save()
 
         return redirect('/')
 
