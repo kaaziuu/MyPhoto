@@ -14,17 +14,12 @@
         <o>{{user.description|linebreaks}} </o>
     </div>
     <div class="col-md-4 col xs-12">
-<<<<<<< Updated upstream
-        <p>Followers: {{ followers }}<br/>
-<<<<<<< HEAD
-            Followers: {{ following }}</p>
-=======
+
+
         <p> Followers:<span id="followers"> {{ followers }} </span> <br/>
             Following:<span id="following"> {{ following }} </span></p>
->>>>>>> Stashed changes
-=======
-            Following: {{ following }}</p>
->>>>>>> follow
+
+
         {% if request.user.username != nick %}
             {% if not Ifollow %}
             <button class="fl-btn" id="follow" onclick="follow('{{nick}}')">follow</button>

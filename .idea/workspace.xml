@@ -4,6 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/MyPhoto/views.py" line="60" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="e6c2c612-cb81-4f92-966a-9ef43ce92b9c" name="Default Changelist" comment="">
 <<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
@@ -18,6 +19,9 @@
       <change beforePath="$PROJECT_DIR$/templates/photo/photo_tem.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/photo/photo_tem.html" afterDir="false" />
 >>>>>>> ajax_test
     </list>
+=======
+    <list default="true" id="86447f84-327d-4fd2-bfee-5bb2fd63819c" name="Default Changelist" comment="" />
+>>>>>>> Stashed changes
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +48,7 @@
     </window>
   </component>
   <component name="FileEditorManager">
+<<<<<<< Updated upstream
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/main/front.html">
@@ -147,6 +152,14 @@
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
+=======
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/navbar.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+>>>>>>> Stashed changes
             </state>
           </provider>
         </entry>
@@ -227,14 +240,9 @@
             <path>
               <item name="MyPhoto" type="b2602c69:ProjectViewProjectNode" />
               <item name="MyPhoto" type="462c0819:PsiDirectoryNode" />
-              <item name="account" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MyPhoto" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MyPhoto" type="462c0819:PsiDirectoryNode" />
-              <item name="account" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
+<<<<<<< Updated upstream
             <path>
               <item name="MyPhoto" type="b2602c69:ProjectViewProjectNode" />
               <item name="MyPhoto" type="462c0819:PsiDirectoryNode" />
@@ -279,6 +287,8 @@
               <item name="MyPhoto" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
+=======
+>>>>>>> Stashed changes
           </expand>
           <select />
         </subPane>
@@ -334,7 +344,11 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
+<<<<<<< Updated upstream
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24920969" />
+=======
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24973656" />
+>>>>>>> Stashed changes
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -466,6 +480,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/media/image/54efac742e4555f23760766293c1ac35.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -506,6 +521,11 @@
         </state>
       </provider>
     </entry>
+=======
+    <entry file="file://$PROJECT_DIR$/account/templates/test.html" />
+    <entry file="file://$PROJECT_DIR$/account/templates/register.html" />
+    <entry file="file://$PROJECT_DIR$/account/templates/login.html" />
+>>>>>>> Stashed changes
     <entry file="file://$PROJECT_DIR$/account/templates/tem.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">

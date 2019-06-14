@@ -81,8 +81,6 @@ function deleteCom(pk,idPhoto=null,user=null){
         idPhoto = 'nic';
     }
 
-
-
     $.ajax({
         url: '.',
         data: {
