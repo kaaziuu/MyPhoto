@@ -6,6 +6,6 @@ def slug_generator():
     all_char += numer
     slug = ''
 
-    for i in range(0,1):
+    for i in range(0,25):
         slug += choice(all_char)
     return slug

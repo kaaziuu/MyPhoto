@@ -12,7 +12,9 @@
     <title>Hello, world!</title>
   </head>
   <body>
+    {% if user.is_authenticated %}
     {% include 'navbar.html' with nick=request.username %}
+    {% endif %}
     <dir class="container-fluid">
         <div class="row">
             <div class="col-6 mx-auto">

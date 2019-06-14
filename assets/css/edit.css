@@ -1,0 +1,10 @@
+.none{
+    visibility: hidden;
+}
+img{
+    width: 80%;
+    height: 80%;
+}
+.d{
+    width: 50% !important;
+}

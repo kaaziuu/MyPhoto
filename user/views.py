@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from  django.contrib.auth.models import User
 from Photo.models import Photo, FollowedStatus
 from .models import userData
+from .forms import ProfilePicterEdit,DescriptionEdit
 
 # Create your views here.
 
@@ -115,4 +116,27 @@ def userPage(request, nick):
         'nick': nick,
         'Ifollow': Ifollow
     }
-    return render(request, 'userPage.html', context)
+    return render(request, 'user_page.html', context)
+
+def edit(request,nick):
+    if request.user.username != nick:
+        url = '/u/'+nick+'/edit'
+        return redirect(url)
+    data = userData.objects.filter(user__username=nick)
+    data = data.first()
+    image_edit = ProfilePicterEdit(request.POST or None, request.FILES or None,instance=data)
+    if image_edit.is_valid():
+        image_edit.save()
+        image_edit = ProfilePicterEdit()
+
+    description_edit = DescriptionEdit(request.POST or None,instance=data)
+    if description_edit.is_valid():
+        description_edit.save()
+        description_edit = DescriptionEdit()
+
+    context = {
+        'data': data,
+        'imageEdit': image_edit,
+        'descriptionEdit': description_edit
+    }
+    return render(request,'edit_page.html',context)

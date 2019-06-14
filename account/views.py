@@ -1,8 +1,9 @@
 from django.shortcuts import render,redirect
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import (
     authenticate,
     login,
-    logout
+    logout as dj_logout
 )
 
 from .forms import *
@@ -24,7 +25,7 @@ def login_view(request):
         if next:
             redirect(next)
 
-        return redirect('/')
+        return redirect('/u/kaziu')
 
     context = {
         'form':form,
@@ -32,9 +33,10 @@ def login_view(request):
     }
     return render(request,'tem.html',context)
 
+
 def logout(request):
-    logout(request)
-    return redirect('/')
+    dj_logout(request)
+    return redirect('/account/login/')
 
 def register_view(request):
     next = request.GET.get('next')

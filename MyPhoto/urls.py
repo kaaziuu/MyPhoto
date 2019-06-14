@@ -21,6 +21,7 @@ from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from MyPhoto import views
 from Photo.views import add_photo
+from user.views import edit
 
 
 urlpatterns = [
@@ -29,7 +30,8 @@ urlpatterns = [
     path('account/',include('account.urls')),
     path('',views.main_view),
     path('u/',include('user.urls')),
-    path('a/', add_photo)
+    path('a/', add_photo),
+
 ]
 urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
 urlpatterns += staticfiles_urlpatterns()

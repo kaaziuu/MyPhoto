@@ -84,8 +84,7 @@ def add_photo(request):
         obj.save()
         return redirect('/u/'+request.user.username)
 
-
     context = {
-        'form' : form
+        'form': form
     }
-    return  render(request,'add_photo.html',context)
+    return  render(request, 'add_photo.html', context)
