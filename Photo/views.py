@@ -1,6 +1,6 @@
-from django.shortcuts import render
-
-from .forms import addComment
+from django.shortcuts import render,redirect
+from .slug_generator import slug_generator
+from .forms import addComment,AddPhoto
 from .models import Photo,UserLike,Coments
 # Create your views here.
 
@@ -47,9 +47,8 @@ def show_photo(request,slug):
                 all_com[int(id)].delete()
 
 
+
     form =  addComment()
-
-
 
     obj = Photo.objects.filter(slug=slug)
     photo_like = UserLike.objects.filter(user=request.user, photo=obj.first(), islike=True)
@@ -68,3 +67,25 @@ def show_photo(request,slug):
 
     return render(request, 'photo.html', context)
 
+
+def add_photo(request):
+    form = AddPhoto(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        print(form.cleaned_data)
+        obj = form.save(commit=False)
+        obj.author = request.user
+        ok = False
+        while not ok:
+            try:
+                obj.slug = slug_generator()
+                ok = True
+            except:
+                print('again')
+        obj.save()
+        return redirect('/u/'+request.user.username)
+
+
+    context = {
+        'form' : form
+    }
+    return  render(request,'add_photo.html',context)

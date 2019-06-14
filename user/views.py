@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from  django.contrib.auth.models import User
 from Photo.models import Photo, FollowedStatus
 from .models import userData
@@ -60,6 +60,11 @@ def userPage(request, nick):
                     our_status.save()
                 else:
                     print('error')
+
+
+    user = User.objects.filter(username=nick)
+    if len(user)== 0 :
+        return redirect('/')
 
     Ifollow = False
 

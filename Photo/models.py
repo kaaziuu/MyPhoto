@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 
+
 User = settings.AUTH_USER_MODEL
 # Create your models here.
 
@@ -25,6 +26,8 @@ class Photo(models.Model):
 
     class Meta:
         ordering = ['-publish_date', '-author']
+
+
 
     def get_absolute_url(self):
         return f'/p/{self.slug}'
