@@ -24,11 +24,11 @@ def login_view(request):
         if next:
             redirect(next)
 
-        return redirect('/u/kaziu')
+        return redirect('/')
 
     context = {
         'form':form,
-        'w':'login'
+        'w':'sing in'
     }
     return render(request,'tem.html',context)
 
@@ -60,7 +60,7 @@ def register_view(request):
 
     context = {
         'form': form,
-        'w': 'register'
+        'w': 'create an account'
     }
     return render(request,'tem.html',context)
 

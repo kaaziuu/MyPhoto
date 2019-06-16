@@ -13,6 +13,11 @@
         <h5 class="card-title">{{user.user.username}}</h5>
         <p class="card-text">{{user.description|linebreaks}}</p>
         <a href="/u/{{user.user.username}}" class="btn btn-primary">Profile</a>
+          {% if not user in following  %}
+          <button type="button" onclick="follow('{{user.user.username}}',false)" id="follow{{user.user.username}}" class="btn btn-primary"> follow </button>
+          {% else %}
+          <button type="button"  onclick="unfollow('{{user.user.username}}',false)" id="follow{{user.user.username}}" class="btn btn-secondary"> unfollow </button>
+          {% endif %}
       </div>
 </div>
     </div>
@@ -23,3 +28,7 @@
 {% endif %}
 
 {% endblock %}
+
+{% block scripts %}
+<script src="/assets/js/profil/follow.js"></script>
+{% endblock%}

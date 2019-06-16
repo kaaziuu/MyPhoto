@@ -22,9 +22,9 @@
 
         {% if request.user.username != nick %}
             {% if not Ifollow %}
-            <button class="fl-btn" id="follow" onclick="follow('{{nick}}')">follow</button>
+            <button class="btn-primary" id="follow" onclick="follow('{{nick}}')">follow</button>
             {% else %}
-            <button class="ufl-btn" id="follow" onclick="unfollow('{{ nick }} ')">unfollow</button>
+            <button class="btn-secondary" id="follow" onclick="unfollow('{{ nick }} ')">unfollow</button>
             {% endif %}
 
 

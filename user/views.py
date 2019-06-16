@@ -4,64 +4,15 @@ from django.contrib.auth.models import User
 from Photo.models import Photo, FollowedStatus
 from .models import userData
 from .forms import ProfilePicterEdit,DescriptionEdit
+from user import followi
 
 # Create your views here.
 
 @login_required
 def userPage(request, nick):
     if request.is_ajax():
-        fl_nick = request.POST.get('nick')
-        fun = request.POST.get('f')
-        if fun == 'follow':
-            our_status = FollowedStatus.objects.filter(u1__username=nick, u2=request.user)
-            if len(our_status) > 0:
-                our_status = our_status.first()
-                if our_status.status == 0:
-                    our_status.status = 2
+        followi.follow_and_unfollow(request,nick)
 
-                elif our_status.status == 1:
-                    our_status.status = 3
-                our_status.save()
-            else:
-                our_status = FollowedStatus.objects.filter(u1=request.user, u2__username=nick)
-
-                if len(our_status) > 0:
-                    our_status = our_status.first()
-                    if our_status.status == 0:
-                        our_status.status = 1
-                    elif our_status.status == 2:
-                        our_status.status = 3
-                    our_status.save()
-                else:
-                    u2 = User.objects.get(username=nick)
-                    FollowedStatus.objects.create(u1=request.user, u2=u2, status=1)
-
-        elif fun == 'unfollow':
-
-            # I don't know why i can't user fl_nick
-
-            our_status = FollowedStatus.objects.filter(u1__username=nick, u2=request.user)
-            if len(our_status) > 0:
-                our_status = our_status.first()
-                if our_status.status == 3:
-                    our_status.status = 1
-
-                elif our_status.status == 2:
-                    our_status.status = 0
-                our_status.save()
-
-            else:
-                our_status = FollowedStatus.objects.filter(u1=request.user, u2__username=nick)
-
-                if len(our_status) > 0:
-                    our_status = our_status.first()
-                    if our_status.status == 1:
-                        our_status.status = 0
-                    elif our_status.status == 3:
-                        our_status.status = 2
-                    our_status.save()
-                else:
-                    print('error')
 
 
     user = User.objects.filter(username=nick)
