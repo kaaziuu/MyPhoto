@@ -32,7 +32,9 @@ class UserMenager(models.Manager):
     def by_nick(self,nick=None):
         if Query is None:
             return self.get_queryset().none()
-        return self.get_queryset().search_by_nick(nick)
+        return self.get_queryset().by_nick(nick)
+
+
 
 
 

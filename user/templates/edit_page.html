@@ -2,12 +2,12 @@
 {% block css %} /assets/css/edit.css {%  endblock %}
 {% block user_page %}
 
-<div class="d-flex justify-content-center">
+<div class="row justify-content-center">
     <div class="col-md-6">
         <h1>Edit your profile</h1>
     </div>
 </div>
-<div class="d-flex justify-content-center">
+<div class="row  justify-content-center mb-5">
     <div class="col-md-6">
         {% if data.profilePicture %}
         <img src="{{data.profilePicture.url}}">
@@ -16,21 +16,21 @@
         {% endif %}
         <br>
         <button class="mt-1" onclick="show('f1')">Edit</button>
-        <form class="none" id="f1" method="post" enctype="multipart/form-data">{% csrf_token %}
+        <form class="f1" id="f1" method="post" enctype="multipart/form-data">{% csrf_token %}
             {{ imageEdit.as_p }}
         <button type="submit">change</button>
         </form>
     </div>
 </div>
-<br>
-<div class="d-flex justify-content-center">
+
+<div class="row  justify-content-center edit">
     <div class="col-md-6">
-        <p>{{ data.description|linebreaks }}</p>
+        <span id="description">{{ data.description|linebreaks }}</span>
         <button class="mt-1" onclick="show('f2')">Edit</button>
-        <form class="none" id="f2" method="post">{% csrf_token %}
+        <form class="none f2" id="f2" method="post">{% csrf_token %}
             {{ descriptionEdit.as_p }}
-            <button type="submit">change</button>
         </form>
+         <button  class="none f2" type="button" onclick="desEdit('{{request.user.username}}')">change</button>
     </div>
 </div>
 

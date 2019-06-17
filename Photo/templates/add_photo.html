@@ -1,10 +1,14 @@
-{% extends 'base.html' %}
+{% extends 'base2.html' %}
 
-{% block content %}
+{% block user_page %}
+<div class="row">
+<div class="col-md-6 mx-auto">
 <h1>ADD PHOTO</h1>
 <form method="post" action="." enctype="multipart/form-data">{% csrf_token %}
     {{form.as_p}}
     <button type="submit">upload</button>
 </form>
+</div>
+</div>
 
 {% endblock %}

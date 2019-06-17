@@ -13,8 +13,6 @@ def userPage(request, nick):
     if request.is_ajax():
         followi.follow_and_unfollow(request,nick)
 
-
-
     user = User.objects.filter(username=nick)
     if len(user)== 0 :
         return redirect('/')
@@ -75,17 +73,26 @@ def edit(request,nick):
     if request.user.username != nick:
         url = '/u/'+nick+'/edit'
         return redirect(url)
+    if request.is_ajax():
+        mod = request.POST.get('mode')
+        if mod == 'des':
+            new_des = request.POST.get('des')
+            data = userData.object.by_nick(request.user.username)
+            data= data.first()
+            data.description = new_des
+            print(data)
+            data.save()
+
+
     data = userData.object.all().by_nick(nick)
     data = data.first()
-    image_edit = ProfilePicterEdit(request.POST or None, request.FILES or None,instance=data)
+    image_edit = ProfilePicterEdit(request.POST or None,request.FILES or None,instance=data)
     if image_edit.is_valid():
         image_edit.save()
         image_edit = ProfilePicterEdit()
 
-    description_edit = DescriptionEdit(request.POST or None,instance=data)
-    if description_edit.is_valid():
-        description_edit.save()
-        description_edit = DescriptionEdit(instance=data)
+    description_edit = DescriptionEdit(instance=data)
+    image_edit = ProfilePicterEdit()
 
     context = {
         'data': data,
