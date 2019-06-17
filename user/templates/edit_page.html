@@ -2,37 +2,38 @@
 {% block css %} /assets/css/edit.css {%  endblock %}
 {% block user_page %}
 
-<div class="row justify-content-center">
-    <div class="col-md-6">
+<div class="row">
+    <div class="col-md-6 offset-md-4" >
         <h1>Edit your profile</h1>
     </div>
 </div>
-<div class="row  justify-content-center mb-5">
-    <div class="col-md-6">
-        {% if data.profilePicture %}
+<br>
+<div class="row">
+    <div class="col-md-6 offset-md-4">
+        <h3>your description</h3><br>
+        <span id="dexription">
+            {{descriptionEdit.as_p }}
+        </span>
+        <button onclick="desEdit('{{request.user.username}}')">Save</button>
+    </div>
+</div>
+<br>
+<div class="row ">
+    <div class="col-md-6 offset-md-4">
+        <h3>your Profile picture</h3><br>
         <img src="{{data.profilePicture.url}}">
-        {% else %}
-        <h3> chose your profile picture </h3>
-        {% endif %}
-        <br>
-        <button class="mt-1" onclick="show('f1')">Edit</button>
-        <form class="f1" id="f1" method="post" enctype="multipart/form-data">{% csrf_token %}
-            {{ imageEdit.as_p }}
-        <button type="submit">change</button>
+        <form action="." method="post" enctype="multipart/form-data"> {% csrf_token %}
+            {{imageEdit.as_p}}
+            <button type="submit">change</button>
         </form>
     </div>
 </div>
+<br>
+<br>
+<br>
+<br>
 
-<div class="row  justify-content-center edit">
-    <div class="col-md-6">
-        <span id="description">{{ data.description|linebreaks }}</span>
-        <button class="mt-1" onclick="show('f2')">Edit</button>
-        <form class="none f2" id="f2" method="post">{% csrf_token %}
-            {{ descriptionEdit.as_p }}
-        </form>
-         <button  class="none f2" type="button" onclick="desEdit('{{request.user.username}}')">change</button>
-    </div>
-</div>
+
 
 
 {% endblock %}

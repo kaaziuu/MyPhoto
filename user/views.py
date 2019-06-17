@@ -75,10 +75,15 @@ def edit(request,nick):
         return redirect(url)
     if request.is_ajax():
         mod = request.POST.get('mode')
+
         if mod == 'des':
+            print(mod)
             new_des = request.POST.get('des')
             data = userData.object.by_nick(request.user.username)
-            data= data.first()
+            print(new_des)
+            print(data)
+            # data= data.first()
+            data = data[0]
             data.description = new_des
             print(data)
             data.save()

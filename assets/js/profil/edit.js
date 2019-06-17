@@ -32,8 +32,8 @@ function show(id){
 
 }
 function desEdit(nick){
-    newDes = $('#id_description').val();
-
+    newDes = $("#id_description").val();
+    console.log(newDes)
     url = "/u/"+nick+"/edit/";
     $("#description").empty();
     $("#description").html("<p>"+newDes+"</p>");
