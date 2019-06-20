@@ -1,6 +1,8 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 from Photo.models import Photo,FollowedStatus,UserLike
 
+@login_required()
 def main_view(request):
     if request.is_ajax():
         # print('yes ajax')
