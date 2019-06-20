@@ -10,3 +10,6 @@ class DescriptionEdit(models.ModelForm):
     class Meta:
         model = userData
         fields = ['description']
+        labels = {
+            'description': ('')
+        }

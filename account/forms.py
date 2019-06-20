@@ -34,10 +34,12 @@ class UserRegisterForm(forms.ModelForm):
     class Meta:
         model = User
         fields = [
+            'first_name',
+            'last_name',
             'username',
             'email',
             'email1',
-            'password'
+            'password',
         ]
 
     def clean(self, *args, **kwargs):

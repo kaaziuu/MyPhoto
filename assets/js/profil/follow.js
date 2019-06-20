@@ -22,21 +22,28 @@ $.ajaxSetup({
     }
 });
 
-function follow(nick){
-    $("#follow").removeClass('fl-btn').addClass('ufl-btn');
-    $('#follow').removeAttr('onclick');
-    $('#follow').attr('onclick', 'unfollow("'+nick+ '")');
-    $('#follow').text('unfollow');
+function follow(nick,userPage=true){
+    id = "#follow";
+    if(!userPage){
+        id += nick
+    }
+    $(id).removeClass('btn-primary').addClass('btn-secondary');
+    $(id).removeAttr('onclick');
+    $(id).attr('onclick', 'unfollow("'+nick+ '")');
+    $(id).text('unfollow');
     fl = $('#followers').html();
     // alert(fl);
     fl = parseInt(fl);
     fl++;
     $('#followers').text(" "+fl);
-
+    redirect = '.'
+    if(userPage){
+        redirect = '/u/' + nick;
+    }
 
     $.ajax
     ({
-        url:'/u/'+nick,
+        url: redirect,
         cache: false,
         data: {
             'nick': nick,
@@ -51,21 +58,28 @@ function follow(nick){
 
 }
 
-function unfollow(nick){
-    $("#follow").removeClass('ufl-btn').addClass('fl-btn');
-    $('#follow').removeAttr('onclick');
-    $('#follow').attr('onclick', 'follow("'+nick+ '")');
-    $('#follow').text('follow');
+function unfollow(nick, userPage = true){
+    id = "#follow";
+    if (!userPage) {
+        id += nick
+    }
+    $(id).removeClass('btn-secondary').addClass('btn-primary');
+    $(id).removeAttr('onclick');
+    $(id).attr('onclick', 'follow("'+nick+ '")');
+    $(id).text('follow');
     fl = $('#followers').html();
     // alert(fl);
     fl = parseInt(fl);
     fl--;
     $('#followers').text(" "+fl);
-
+    redirect = '/search/'
+    if (userPage) {
+        redirect = '/u/' + nick;
+    }
 
     $.ajax
     ({
-        url:'/u/'+nick,
+        url:redirect,
         cache: false,
         data: {
             'nick': nick,

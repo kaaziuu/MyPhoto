@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'Photo',
     'account',
     'user',
+    'search',
 ]
 
 MIDDLEWARE = [

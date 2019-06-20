@@ -1,67 +1,17 @@
 from django.shortcuts import render,redirect
-from  django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from Photo.models import Photo, FollowedStatus
 from .models import userData
 from .forms import ProfilePicterEdit,DescriptionEdit
+from user import followi
 
 # Create your views here.
 
-
+@login_required
 def userPage(request, nick):
     if request.is_ajax():
-        fl_nick = request.POST.get('nick')
-        fun = request.POST.get('f')
-        if fun == 'follow':
-            our_status = FollowedStatus.objects.filter(u1__username=nick, u2=request.user)
-            if len(our_status) > 0:
-                our_status = our_status.first()
-                if our_status.status == 0:
-                    our_status.status = 2
-
-                elif our_status.status == 1:
-                    our_status.status = 3
-                our_status.save()
-            else:
-                our_status = FollowedStatus.objects.filter(u1=request.user, u2__username=nick)
-
-                if len(our_status) > 0:
-                    our_status = our_status.first()
-                    if our_status.status == 0:
-                        our_status.status = 1
-                    elif our_status.status == 2:
-                        our_status.status = 3
-                    our_status.save()
-                else:
-                    u2 = User.objects.get(username=nick)
-                    FollowedStatus.objects.create(u1=request.user, u2=u2, status=1)
-
-        elif fun == 'unfollow':
-
-            # I don't know why i can't user fl_nick
-
-            our_status = FollowedStatus.objects.filter(u1__username=nick, u2=request.user)
-            if len(our_status) > 0:
-                our_status = our_status.first()
-                if our_status.status == 3:
-                    our_status.status = 1
-
-                elif our_status.status == 2:
-                    our_status.status = 0
-                our_status.save()
-
-            else:
-                our_status = FollowedStatus.objects.filter(u1=request.user, u2__username=nick)
-
-                if len(our_status) > 0:
-                    our_status = our_status.first()
-                    if our_status.status == 1:
-                        our_status.status = 0
-                    elif our_status.status == 3:
-                        our_status.status = 2
-                    our_status.save()
-                else:
-                    print('error')
-
+        followi.follow_and_unfollow(request,nick)
 
     user = User.objects.filter(username=nick)
     if len(user)== 0 :
@@ -70,7 +20,7 @@ def userPage(request, nick):
     Ifollow = False
 
     objs = Photo.objects.filter(author__username=nick)
-    userDatas = userData.objects.filter(user__username=nick)
+    userDatas = userData.object.all().by_nick(nick)
     is_photo = False
     if len(userDatas) > 0:
         userDatas = userDatas.first()
@@ -118,21 +68,36 @@ def userPage(request, nick):
     }
     return render(request, 'user_page.html', context)
 
+@login_required
 def edit(request,nick):
     if request.user.username != nick:
         url = '/u/'+nick+'/edit'
         return redirect(url)
-    data = userData.objects.filter(user__username=nick)
+    if request.is_ajax():
+        mod = request.POST.get('mode')
+
+        if mod == 'des':
+            print(mod)
+            new_des = request.POST.get('des')
+            data = userData.object.by_nick(request.user.username)
+            print(new_des)
+            print(data)
+            # data= data.first()
+            data = data[0]
+            data.description = new_des
+            print(data)
+            data.save()
+
+
+    data = userData.object.all().by_nick(nick)
     data = data.first()
-    image_edit = ProfilePicterEdit(request.POST or None, request.FILES or None,instance=data)
+    image_edit = ProfilePicterEdit(request.POST or None,request.FILES or None,instance=data)
     if image_edit.is_valid():
         image_edit.save()
         image_edit = ProfilePicterEdit()
 
-    description_edit = DescriptionEdit(request.POST or None,instance=data)
-    if description_edit.is_valid():
-        description_edit.save()
-        description_edit = DescriptionEdit()
+    description_edit = DescriptionEdit(instance=data)
+    image_edit = ProfilePicterEdit()
 
     context = {
         'data': data,

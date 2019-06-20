@@ -27,10 +27,11 @@ from user.views import edit
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('p/', include('Photo.urls')),
-    path('account/',include('account.urls')),
+    path('accounts/',include('account.urls')),
     path('',views.main_view),
     path('u/',include('user.urls')),
     path('a/', add_photo),
+    path('search/',include('search.urls'))
 
 ]
 urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)

@@ -1,5 +1,5 @@
 .none{
-    visibility: hidden;
+    display: none;
 }
 img{
     width: 80%;
@@ -8,3 +8,4 @@ img{
 .d{
     width: 50% !important;
 }
+
