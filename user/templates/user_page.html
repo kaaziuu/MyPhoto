@@ -3,17 +3,18 @@
 
 {% block user_page %}
 <div  class="row mb-4">
-    <div class="col-md-4 col-xs-6 profile">
+    <div class="col-md-4 col-xs-6 profile offset-1  offset-md-0">
+        <h3 class="text-centre">{{user.user.username}}</h3>
         {% if isPhoto %}
         <img id="profile" src="{{user.profilePicture.url }}">
         {% else %}
-        <div id="profDiv"></div>
+        <div id="profDiv" ></div>
         {% endif %}
     </div>
-    <div class="col-md-4 col-xs-6 profile">
+    <div class="col-md-4 col-xs-6 profile profile offset-1  offset-md-0">
         <o>{{user.description|linebreaks}} </o>
     </div>
-    <div class="col-md-4 col xs-12">
+    <div class="col-md-4 col xs-12 profile offset-1 offset-md-0">
 
 
         <p> Followers:<span id="followers"> {{ followers }} </span> <br/>
@@ -33,16 +34,16 @@
 
 </div>
 
-<div class="row">
+<div class="row ">
 {% for photo in photos %}
-            <div class="col-md-4 col-xs-12">
+            <div class="col-md-4 col-xs-12 profile offset-1  offset-md-0 photos">
                 <a href="{{ photo.get_absolute_url }}"> <img  src="{{ photo.image.url }}" alt="Card image cap"> </a>
                 <p class="description">{{photo.description|truncatechars:30 }}</p>
             </div>
 
 
 {% endfor %}
-        </div>
+</div>
 {% endblock %}
 
 {% block scripts %}

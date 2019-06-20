@@ -17,14 +17,14 @@ def userPage(request, nick):
     if len(user)== 0 :
         return redirect('/')
 
-    Ifollow = False
+    I_follow = False
 
     objs = Photo.objects.filter(author__username=nick)
-    userDatas = userData.object.all().by_nick(nick)
+    user_datas = userData.object.all().by_nick(nick)
     is_photo = False
-    if len(userDatas) > 0:
-        userDatas = userDatas.first()
-        if userDatas.profilePicture:
+    if len(user_datas) > 0:
+        user_datas = user_datas.first()
+        if user_datas.profilePicture:
             is_photo = True
 
     ct_following = 0
@@ -35,11 +35,11 @@ def userPage(request, nick):
             ct_following += 1
             ct_followers += 1
             if status.u2 == request.user:
-                Ifollow = True
+                I_follow = True
         elif status.status == 2:
             ct_followers += 1
             if status.u2 == request.user:
-                Ifollow = True
+                I_follow = True
         elif status.status == 1:
             ct_following += 1
 
@@ -49,22 +49,24 @@ def userPage(request, nick):
             ct_following += 1
             ct_followers += 1
             if status.u1 == request.user:
-                Ifollow = True
+                I_follow = True
         elif status.status == 1:
             ct_followers += 1
             if status.u1 == request.user:
-                Ifollow = True
+                I_follow = True
         elif status.status == 2:
             ct_following += 1
+
+    for objs.com
 
     context = {
         'isPhoto': is_photo,
         'photos': objs,
-        'user': userDatas,
+        'user': user_datas,
         'following': ct_following,
         'followers': ct_followers,
         'nick': nick,
-        'Ifollow': Ifollow
+        'Iollow': I_follow
     }
     return render(request, 'user_page.html', context)
 
