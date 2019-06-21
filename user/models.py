@@ -40,7 +40,7 @@ class UserMenager(models.Manager):
 
 
 
-class userData(models.Model):
+class UserData(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE,unique=True)
     profilePicture = models.ImageField(upload_to='image/profile/',null=True,blank=True)
     description = models.TextField(null=True,blank=True)

@@ -2,9 +2,14 @@
 {% block css %} /assets/css/user.css {% endblock %}
 
 {% block user_page %}
+<div class="row">
+    <div class="col-md-12 col-xs-6 profile offset-1  offset-md-0">
+        <h1 class="text-centre">{{user.user.username}}</h1>
+    </div>
+</div>
 <div  class="row mb-4">
     <div class="col-md-4 col-xs-6 profile offset-1  offset-md-0">
-        <h3 class="text-centre">{{user.user.username}}</h3>
+
         {% if isPhoto %}
         <img id="profile" src="{{user.profilePicture.url }}">
         {% else %}
@@ -39,6 +44,7 @@
             <div class="col-md-4 col-xs-12 profile offset-1  offset-md-0 photos">
                 <a href="{{ photo.get_absolute_url }}"> <img  src="{{ photo.image.url }}" alt="Card image cap"> </a>
                 <p class="description">{{photo.description|truncatechars:30 }}</p>
+
             </div>
 
 
@@ -48,4 +54,5 @@
 
 {% block scripts %}
 <script src="/assets/js/profil/follow.js"></script>
+<script src="/assets/js/photo/hashtag.js"></script>
 {% endblock %}

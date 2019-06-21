@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from Photo.models import Photo, FollowedStatus
-from .models import userData
+from .models import UserData
 from .forms import ProfilePicterEdit,DescriptionEdit
 from user import followi
 
@@ -20,7 +20,7 @@ def userPage(request, nick):
     I_follow = False
 
     objs = Photo.objects.filter(author__username=nick)
-    user_datas = userData.object.all().by_nick(nick)
+    user_datas = UserData.object.all().by_nick(nick)
     is_photo = False
     if len(user_datas) > 0:
         user_datas = user_datas.first()
@@ -57,8 +57,6 @@ def userPage(request, nick):
         elif status.status == 2:
             ct_following += 1
 
-    for objs.com
-
     context = {
         'isPhoto': is_photo,
         'photos': objs,
@@ -66,7 +64,7 @@ def userPage(request, nick):
         'following': ct_following,
         'followers': ct_followers,
         'nick': nick,
-        'Iollow': I_follow
+        'Iollow': I_follow,
     }
     return render(request, 'user_page.html', context)
 
@@ -81,7 +79,7 @@ def edit(request,nick):
         if mod == 'des':
             print(mod)
             new_des = request.POST.get('des')
-            data = userData.object.by_nick(request.user.username)
+            data = UserData.object.by_nick(request.user.username)
             print(new_des)
             print(data)
             # data= data.first()
@@ -91,7 +89,7 @@ def edit(request,nick):
             data.save()
 
 
-    data = userData.object.all().by_nick(nick)
+    data = UserData.object.all().by_nick(nick)
     data = data.first()
     image_edit = ProfilePicterEdit(request.POST or None,request.FILES or None,instance=data)
     if image_edit.is_valid():

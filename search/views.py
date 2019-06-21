@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from user.models import userData
+from user.models import UserData
 from Photo.models import FollowedStatus,Photo
 from user import followi
 # Create your views here.
@@ -11,15 +11,15 @@ def search(request):
 
     query = request.GET.get('q', None)
     context = {}
-    tempate = 'user_search.html'
+    template = 'user_search.html'
     if query is not None:
         if query[0] == '#':
-            tempate = 'main/front.html'
+            template = 'main/front.html'
             photos = Photo.objects.filter(description__icontains = query)
             context['photos'] = photos
         else:
-            tempate = 'search/user_search.html'
-            user_list = userData.object.all().search(query)
+            template = 'search/user_search.html'
+            user_list = UserData.object.all().search(query)
             context['userlist'] = user_list
             i_follow = []
             for user in user_list:
@@ -39,4 +39,4 @@ def search(request):
 
 
         print(context)
-    return render(request, tempate, context)
+    return render(request, template, context)

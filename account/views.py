@@ -6,7 +6,7 @@ from django.contrib.auth import (
     logout as dj_logout
 )
 from .forms import *
-from user.models import userData
+from user.models import UserData
 
 # Create your views here.
 
@@ -52,7 +52,7 @@ def register_view(request):
         if next:
             return redirect(next)
 
-        new_data = userData()
+        new_data = UserData()
         new_data.user = request.user
         new_data.save()
 
