@@ -14,7 +14,7 @@
         <span id="dexription">
             {{descriptionEdit.as_p }}
         </span>
-        <button onclick="desEdit('{{request.user.username}}')">Save</button>
+        <button class="btn btn-secondary active" onclick="desEdit('{{request.user.username}}')">Save</button>
     </div>
 </div>
 <br>
@@ -24,7 +24,7 @@
         <img src="{{data.profilePicture.url}}">
         <form action="." method="post" enctype="multipart/form-data"> {% csrf_token %}
             {{imageEdit.as_p}}
-            <button type="submit">change</button>
+            <button class="btn btn-secondary active"  type="submit">change</button>
         </form>
     </div>
 </div>

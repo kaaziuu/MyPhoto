@@ -7,6 +7,10 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!--  fonts   -->
+      <link href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap&subset=latin-ext" rel="stylesheet">
+
+
       <link rel="stylesheet" type="text/css" href="{%block css %}{%endblock%}">
     <script scr="{% block js %} {%endblock %}"></script>
     <title>MyPhoto</title>
@@ -17,7 +21,7 @@
           {% block user_page %}
         {% endblock %}
     </dir>
-
+    {% include 'footer.html' %}
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

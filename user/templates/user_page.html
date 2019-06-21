@@ -2,8 +2,9 @@
 {% block css %} /assets/css/user.css {% endblock %}
 
 {% block user_page %}
+
 <div class="row">
-    <div class="col-md-12 col-xs-6 profile offset-1  offset-md-0">
+    <div class="col-md-12 col-xs-6 profile  ">
         <h1 class="text-centre">{{user.user.username}}</h1>
     </div>
 </div>
@@ -16,13 +17,15 @@
         <div id="profDiv" ></div>
         {% endif %}
     </div>
-    <div class="col-md-4 col-xs-6 profile profile offset-1  offset-md-0">
-        <o>{{user.description|linebreaks}} </o>
+    <div class="col-md-4 col-xs-6  offset-1  offset-md-0">
+        <div class="profileDes">
+        <o >{{user.description|linebreaks}} </o>
+        </div>
     </div>
     <div class="col-md-4 col xs-12 profile offset-1 offset-md-0">
 
 
-        <p> Followers:<span id="followers"> {{ followers }} </span> <br/>
+        <p class="bold-f"> Followers:<span id="followers"> {{ followers }} </span> <br/>
             Following:<span id="following"> {{ following }} </span></p>
 
 
@@ -41,13 +44,12 @@
 
 <div class="row ">
 {% for photo in photos %}
-            <div class="col-md-4 col-xs-12 profile offset-1  offset-md-0 photos">
-                <a href="{{ photo.get_absolute_url }}"> <img  src="{{ photo.image.url }}" alt="Card image cap"> </a>
-                <p class="description">{{photo.description|truncatechars:30 }}</p>
-
+            <div class="col-md-4 col-12  offset-1   offset-md-0 ">
+                <div class="Columns column-margin photos">
+                    <a href="{{ photo.get_absolute_url }}"> <img  src="{{ photo.image.url }}" alt="Card image cap"> </a>
+                    <p class="description">{{photo.description|truncatechars:30 }}</p>
+                </div>
             </div>
-
-
 {% endfor %}
 </div>
 {% endblock %}

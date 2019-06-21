@@ -64,7 +64,7 @@ def userPage(request, nick):
         'following': ct_following,
         'followers': ct_followers,
         'nick': nick,
-        'Iollow': I_follow,
+        'Ifollow': I_follow,
     }
     return render(request, 'user_page.html', context)
 

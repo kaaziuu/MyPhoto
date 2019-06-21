@@ -13,16 +13,16 @@
           <h5 class="card-title">
             {% if like %}
 
-              <button type="submit" onclick="unlike({{id}},{{photo.pk}})"id="{{id}}" class="like"></button>
+              <button type="submit" onclick="unlike({{id}},{{photo.pk}})"id="{{id}}" class="like btn"></button>
 
             {% elif not like %}
 
-              <button onclick="like({{id}},{{photo.pk}})"id="{{id}}" class="unlike"></button>
+              <button onclick="like({{id}},{{photo.pk}})"id="{{id}}" class="unlike btn"></button>
 
           {% endif %}
           <span id="like{{id}}">{{ photo.like }}</span>
           <br>
-              <a href="/u/{{photo.author.username}}"> {{ photo.author.username }} </a>
+              <a class="toProf" href="/u/{{photo.author.username}}"> {{ photo.author.username }} </a>
           </h5>
           <p class="card-text description">{{ photo.description }}</p>
 
@@ -43,7 +43,7 @@
                 {% endfor %}
                 </div>
             {% else %}
-                <a href="{{photo.get_absolute_url}}">add comment</a>
+                <a class="link" href="{{photo.get_absolute_url}}">add comment</a>
             {% endif %}
 
         </div>

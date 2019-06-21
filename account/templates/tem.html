@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
-
+{% block css %} /assets/css/main.css {% endblock %}
 {% block content %}
 <h1>{{ w }}</h1>
 <form method="post">{% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="{{w}}">
+    <input class="btn btn-secondary active" type="submit" value="{{w}}">
 </form>
 {% if w == "create an account" %}
-<a href="/accounts/login">sing in</a>
+<a class="btn btn-secondary  active mt-2" href="/accounts/login">sing in</a>
 {% else %}
-<a href="/accounts/register">create an account</a>
+<a class="btn btn-secondary  active mt-2" href="/accounts/register">create an account</a>
 {% endif %}
 
 {% endblock %}
