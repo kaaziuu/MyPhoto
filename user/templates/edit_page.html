@@ -22,16 +22,19 @@
     <div class="col-md-6 offset-md-4">
         <h3>your Profile picture</h3><br>
         <img src="{{data.profilePicture.url}}">
-        <form action="." method="post" enctype="multipart/form-data"> {% csrf_token %}
+        <form " action="." method="post" enctype="multipart/form-data"> {% csrf_token %}
             {{imageEdit.as_p}}
             <button class="btn btn-secondary active"  type="submit">change</button>
         </form>
     </div>
 </div>
+
 <br>
 <br>
 <br>
 <br>
+<br>
+
 
 
 
