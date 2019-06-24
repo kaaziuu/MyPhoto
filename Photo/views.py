@@ -87,6 +87,8 @@ def add_photo(request):
         return redirect('/u/'+request.user.username)
 
     context = {
-        'form': form
+        'form': form,
+        "toBottom": True
+
     }
     return  render(request, 'add_photo.html', context)

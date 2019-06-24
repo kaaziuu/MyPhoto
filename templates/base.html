@@ -28,10 +28,12 @@
 
             </div>
         </div>
+
     </dir>
-    {% block user_page %}
-    {% endblock %}
-    {% include 'footer.html' %}
+
+             {% include 'footer.html' with bottom=toBottom %}
+
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

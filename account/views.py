@@ -28,7 +28,8 @@ def login_view(request):
 
     context = {
         'form':form,
-        'w':'sing in'
+        'w':'sing in',
+        "toBottom": True
     }
     return render(request,'tem.html',context)
 
@@ -60,7 +61,8 @@ def register_view(request):
 
     context = {
         'form': form,
-        'w': 'create an account'
+        'w': 'create an account',
+        "toBottom": True
     }
     return render(request,'tem.html',context)
 

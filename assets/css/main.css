@@ -1,6 +1,7 @@
-body{
+html,body{
     background-color: #eee;
     font-family: 'Lora', serif !important;
+    height: 100%;
 }
 .like{
     background-color: white;
