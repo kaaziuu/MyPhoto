@@ -2,6 +2,10 @@ html,body{
     background-color: #eee;
     font-family: 'Lora', serif !important;
     height: 100%;
+    
+}
+.container-fluid{
+    padding-top: 70px;
 }
 .like{
     background-color: white;

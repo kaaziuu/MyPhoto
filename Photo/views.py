@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .slug_generator import slug_generator
 from .forms import addComment,AddPhoto
 from .models import Photo,UserLike,Coments
+
 # Create your views here.
 
 @login_required
@@ -12,9 +13,9 @@ def show_photo(request,slug):
         id = request.POST.get('id')
         fun = request.POST.get('f')
         photo = Photo.objects.filter(pk=id).first()
-        # print(fun)
-        if fun =='like' or fun=='unlike':
-            is_like = UserLike.objects.filter(user=request.user,photo=photo)
+        if fun == 'like' or fun == 'unlike':
+
+            is_like = UserLike.objects.filter(user=request.user, photo=photo)
             if len(is_like) > 0:
                 is_like = is_like.first()
                 if getattr(is_like, 'islike'):
@@ -28,7 +29,7 @@ def show_photo(request,slug):
                 is_like.save()
 
             else:
-                UserLike.objects.create(user=request.user, photo = photo)
+                UserLike.objects.create(user=request.user, photo=photo)
                 photo.like += 1
                 photo.save()
 
@@ -60,7 +61,8 @@ def show_photo(request,slug):
     context = {
         'photo': obj.first(),
         'form': form,
-        'comments': com
+        'comments': com,
+        "toBottom": True
     }
     if len(photo_like) > 0:
         context['like'] = True

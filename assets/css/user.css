@@ -40,3 +40,6 @@ img {
     margin: 2px 0;
   }
 }
+.container-fluid{
+    padding-top: 70px;
+}

@@ -1,22 +1,46 @@
 from django.shortcuts import render
 from user.models import UserData
-from Photo.models import FollowedStatus,Photo
+from Photo.models import FollowedStatus,Photo,UserLike
 from user import followi
+
 # Create your views here.
 
 
 def search(request):
+    template = 'user_search.html'
     if request.is_ajax():
-        followi.follow_and_unfollow(request)
+        if request.POST.get('f') == 'follow' or request.POST.get('f') == 'unfollow':
+            followi.follow_and_unfollow(request)
+        elif request.POST.get('f') == 'like' or request.POST.get('f') == 'unlike':
+            id = request.POST.get('id')
+            photo = Photo.objects.filter(pk=id).first()
+            is_like = UserLike.objects.filter(user=request.user, photo=photo)
+            if len(is_like) > 0:
+                is_like = is_like.first()
+                if getattr(is_like, 'islike'):
+                    is_like.islike = False
+                    photo.like -= 1
+                else:
+                    is_like.islike = True
+                    photo.like += 1
+
+                photo.save()
+                is_like.save()
+                template = 'main/front.html'
 
     query = request.GET.get('q', None)
     context = {}
-    template = 'user_search.html'
     if query is not None:
         if query[0] == '#':
             template = 'main/front.html'
             photos = Photo.objects.filter(description__icontains = query)
             context['photos'] = photos
+            like_obj = UserLike.objects.filter(user=request.user, islike=True)
+            tmp = []
+
+            for o in like_obj:
+                tmp.append(o.photo)
+            context['like'] = tmp
         else:
             template = 'search/user_search.html'
             user_list = UserData.object.all().search(query)
