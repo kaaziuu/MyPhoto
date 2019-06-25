@@ -91,6 +91,32 @@ function deletePhoto(pk){
         },
         dataType: "json",
         type: "POST"
-    })
-    window.location.replace('/')
+    });
+    window.location.replace('/');
+}
+
+function changeDes(pk){
+    const des = $('#editDes'+pk).text();
+    $('#editDes'+pk).html(
+        '<input id="newDes'+pk+'" type="text" value="'+
+        des+
+        '"/><button onclick="acceptChange('+
+        pk+
+        ')"> accept </button>'
+    );
+}
+function acceptChange(pk){
+    const newDes = $('#newDes'+pk).val();
+    console.log(newDes);
+    $("#editDes"+pk).html(newDes);
+    $.ajax({
+        url: '.',
+        data: {
+            'id': pk,
+            'newDes': newDes,
+            'f': "newDes"
+        },
+        dataType: "json",
+        type: "post"
+    });
 }

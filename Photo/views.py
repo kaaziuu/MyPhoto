@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .slug_generator import slug_generator
 from .forms import addComment,AddPhoto
 from .models import Photo,UserLike,Coments
-from .scripts import deletePhoto
+from .scripts import delete_photo,new_des
 # Create your views here.
 
 @login_required
@@ -33,12 +33,15 @@ def show_photo(request,slug):
                 photo.like += 1
                 photo.save()
         elif fun =='deletePhoto':
-            deletePhoto(id)
+            delete_photo(id)
             redirect('/')
 
         elif fun == 'comment':
             comment = request.POST.get('comment')
             Coments.objects.create(author=request.user, photo=photo, comment=comment)
+        elif fun == 'newDes':
+            new_description = request.POST.get('newDes')
+            new_des(id,new_description)
 
         elif fun == 'deleteComment':
             author_use = request.POST.get('useAuthor')

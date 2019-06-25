@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from Photo.models import Photo,FollowedStatus,UserLike
-from Photo.scripts import deletePhoto
+from Photo.scripts import delete_photo,new_des
 
 @login_required()
 def main_view(request):
@@ -12,7 +12,10 @@ def main_view(request):
         print(id)
         # fun = request.POST.get('f')
         if fun == "deletePhoto":
-            deletePhoto(id)
+            delete_photo(id)
+        elif fun == 'newDes':
+            new_description = request.POST.get('newDes')
+            new_des(id,new_description)
         else:
             photo = Photo.objects.filter(pk=id).first()
             is_like = UserLike.objects.filter(user=request.user,photo=photo)

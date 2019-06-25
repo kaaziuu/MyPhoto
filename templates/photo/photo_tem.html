@@ -1,4 +1,4 @@
-<div class="card-deck {% if mb %} mb-3 {% endif %}">
+<div class="card-deck {% if mb %} mb-3 {% endif %}" >
     <div class="card-deck">
       <div class="card">
           {% if a %}
@@ -33,7 +33,7 @@
                                                           <br>
               <a class="toProf" href="/u/{{photo.author.username}}"> {{ photo.author.username }} </a>
           </h5>
-            <p class="card-text description"> <span id="des">{{ photo.description }} </span>
+            <p class="card-text description"> <span id="editDes{{photo.pk}}">{{ photo.description }}  </span>
             </p>
 
 
