@@ -82,3 +82,15 @@ function like(id,pk) {
 
         });
 }
+function deletePhoto(pk){
+    $.ajax({
+        url: '.',
+        data:{
+            'id':pk,
+            'f':"deletePhoto"
+        },
+        dataType: "json",
+        type: "POST"
+    })
+    window.location.replace('/')
+}

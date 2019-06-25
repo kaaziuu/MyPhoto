@@ -1,33 +1,37 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from Photo.models import Photo,FollowedStatus,UserLike
+from Photo.scripts import deletePhoto
 
 @login_required()
 def main_view(request):
     if request.is_ajax():
         # print('yes ajax')
+        fun = request.POST.get('f')
         id = request.POST.get('id')
         print(id)
         # fun = request.POST.get('f')
-
-        photo = Photo.objects.filter(pk=id).first()
-        is_like = UserLike.objects.filter(user=request.user,photo=photo)
-        if len(is_like) > 0:
-            is_like = is_like.first()
-            if getattr(is_like, 'islike'):
-                is_like.islike = False
-                photo.like -= 1
-            else:
-                is_like.islike = True
-                photo.like += 1
-
-            photo.save()
-            is_like.save()
-
+        if fun == "deletePhoto":
+            deletePhoto(id)
         else:
-            UserLike.objects.create(user=request.user, photo = photo)
-            photo.like += 1
-            photo.save()
+            photo = Photo.objects.filter(pk=id).first()
+            is_like = UserLike.objects.filter(user=request.user,photo=photo)
+            if len(is_like) > 0:
+                is_like = is_like.first()
+                if getattr(is_like, 'islike'):
+                    is_like.islike = False
+                    photo.like -= 1
+                else:
+                    is_like.islike = True
+                    photo.like += 1
+
+                photo.save()
+                is_like.save()
+
+            else:
+                UserLike.objects.create(user=request.user, photo = photo)
+                photo.like += 1
+                photo.save()
             # print(photo.like)
 
     like_obj = UserLike.objects.filter(user=request.user,islike=True)

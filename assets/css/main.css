@@ -64,3 +64,10 @@ a[class='link']:hover{
 .all{
     height: 100%;
 }
+.edit{
+
+    position: absolute;
+    right: 25px;
+    height: 10px !important;
+
+}
