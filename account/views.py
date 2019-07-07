@@ -22,7 +22,7 @@ def login_view(request):
 
         login(request,user)
         if next:
-            redirect(next)
+            return redirect(next)
 
         return redirect('/')
 
