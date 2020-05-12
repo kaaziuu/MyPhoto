@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from Photo.models import Photo,FollowedStatus,UserLike
-from Photo.scripts import delete_photo,new_des
+import logging
+
 
 @login_required()
 def main_view(request):

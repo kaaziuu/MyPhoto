@@ -1,19 +1,27 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
 from .slug_generator import slug_generator
 from .forms import addComment,AddPhoto
 from .models import Photo,UserLike,Coments
 from .scripts import delete_photo,new_des
+import logging
 # Create your views here.
 
 @login_required
 def show_photo(request,slug):
+
     if request.is_ajax():
         # print('yes ajax')
         id = request.POST.get('id')
+
+ 
         fun = request.POST.get('f')
         photo = Photo.objects.filter(pk=id).first()
-        if fun == 'like' or fun == 'unlike':
+        if(fun == 'DELETE'):
+            # id = request.DELETE.get('id')
+            return remove_photo(request, id)
+        elif fun == 'like' or fun == 'unlike':
 
             is_like = UserLike.objects.filter(user=request.user, photo=photo)
             if len(is_like) > 0:
@@ -32,9 +40,6 @@ def show_photo(request,slug):
                 UserLike.objects.create(user=request.user, photo=photo)
                 photo.like += 1
                 photo.save()
-        elif fun =='deletePhoto':
-            delete_photo(id)
-            redirect('/')
 
         elif fun == 'comment':
             comment = request.POST.get('comment')
@@ -100,3 +105,12 @@ def add_photo(request):
 
     }
     return  render(request, 'add_photo.html', context)
+
+@login_required
+def remove_photo(request, id):
+    Photo.objects.filter(pk=int(id)).delete()
+    logging.debug("delete")
+    data = {
+        'ok': "ok"
+    }
+    return JsonResponse(data)
