@@ -108,9 +108,12 @@ def add_photo(request):
 
 @login_required
 def remove_photo(request, id):
-    Photo.objects.filter(pk=int(id)).delete()
+    data = {}
+    try:
+        Photo.objects.filter(pk=int(id)).delete()
+        data['ok'] = True
+    except:
+        data['ok'] = False
     logging.debug("delete")
-    data = {
-        'ok': "ok"
-    }
+
     return JsonResponse(data)

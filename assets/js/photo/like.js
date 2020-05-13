@@ -98,7 +98,7 @@ function deletePhoto(pk){
             console.log("test__ater");
         }
     });
-    window.location.replace('/');
+    // window.location.replace('/');
 }
 
 function changeDes(pk){
