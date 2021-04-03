@@ -1,10 +1,10 @@
 # MyPhoto
 
-Jest to moja wersja instagrama napisana w niespełna 2 miesiące. ( plik readme dodaje po dwóch latach)
+Jest to moja wersja Instagrama napisana w niespełna 2 miesiące. ( plik README dodaje po dwóch latach)
 System oferuje system hashtag i wyszukiwania zdjęć po nim. Zmiany zdjęcia profilowego oraz BIO.
-Użytkownicy mogą siedzbie nawzajem śledzić, dawać lajki oraz komendawać zdjęcia.
+Użytkownicy mogą siebie nawzajem śledzić, dawać lajki oraz komentować zdjęcia.
 
-Do odpalenia storny potrzeba użyć komend
+Do odpalenia strony potrzeba użyć komend.
 
 1. ```pip3 install django```
 2. ```pip3 install pillow```
